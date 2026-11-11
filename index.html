@@ -1,1 +1,3596 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#000000">
+  <meta name="description" content="U MISS IT, U LOSE IT. Curated 1-of-1 Heavyweight Hoodies & Archive Zippers at OOPS! CLUB™ (oopsclub.in). One piece. No restock.">
+  <title>OOPS! CLUB™ | U Miss It, U Lose It — 1-of-1 Hoodies &amp; Zippers</title>
+  <!-- Google Fonts: Montserrat Black (900) for Headlines & Archivo for Body/Zara Editorial UI -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700;800&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* ==========================================================================
+       01. OOPS! CLUB™ BRAND TOKENS + ZARA EDITORIAL TOKENS
+       ========================================================================== */
+    :root {
+      --paper: #000000;          /* Deep Black #000000 */
+      --surface: #0e0e0e;        /* Elevated card & panel surface */
+      --surface-2: #161616;      /* Secondary studio surface */
+      --surface-3: #222222;      /* Hover surface */
+      --ink: #ffffff;            /* Crisp white primary text */
+      --muted: #949494;          /* Technical spec & secondary text */
+      --orange: #ff6600;         /* Official OOPS ORANGE #FF6600 */
+      --orange-bright: #ff7a1f;
+      --line: rgba(255, 255, 255, 0.14);
+      --line-strong: rgba(255, 255, 255, 0.28);
+      --sans: "Archivo", "Helvetica Neue", Arial, sans-serif;
+      --display: "Montserrat", sans-serif;
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 
+      /* PDP & PLP Theme Tokens (Defaults to Zara Editorial Light; toggleable to OOPS! Dark Archive) */
+      --pdp-bg: #000000;
+      --pdp-surface: #111111;
+      --pdp-ink: #ffffff;
+      --pdp-muted: #9a9a9a;
+      --pdp-line: rgba(255, 255, 255, 0.15);
+      --pdp-border-strong: #ffffff;
+      --pdp-accent: #ff6600;
+      --pdp-studio-bg: #181818;
+    }
+
+    body.pdp-theme-light {
+      --pdp-bg: #ffffff;
+      --pdp-surface: #f4f4f2;
+      --pdp-ink: #000000;
+      --pdp-muted: #6e6e6e;
+      --pdp-line: #e5e5e5;
+      --pdp-border-strong: #000000;
+      --pdp-accent: #000000;
+      --pdp-studio-bg: #e7e5e0;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    [hidden] { display: none !important; }
+    html { scroll-behavior: smooth; background: var(--paper); color: var(--ink); }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      overflow-x: hidden;
+    }
+
+    button, input, textarea, select { font: inherit; color: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    a { color: inherit; text-decoration: none; }
+
+    .wrap {
+      width: min(1400px, calc(100% - 40px));
+      margin-inline: auto;
+    }
+
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    /* Official Stacked Logo Styling */
+    .oops-logo {
+      display: inline-flex;
+      flex-direction: column;
+      font-family: var(--display);
+      font-weight: 900;
+      color: var(--orange);
+      text-transform: uppercase;
+      line-height: 0.82;
+      letter-spacing: -0.06em;
+      user-select: none;
+    }
+    .oops-logo .row-top { font-size: 25px; display: flex; align-items: baseline; }
+    .oops-logo .row-bottom { font-size: 25px; display: flex; align-items: baseline; margin-top: -2px; }
+    .oops-logo .tm { font-size: 7.5px; font-weight: 800; letter-spacing: 0.04em; margin-left: 3px; transform: translateY(-10px); }
+
+    /* ==========================================================================
+       02. STICKY HEADER WITH EXACT ZARA [ 0 ] BRACKET BAG ICON (NO WISHLIST / NO USD)
+       ========================================================================== */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    /* Zara-style 2-line hamburger button */
+    .zara-menu-lines {
+      display: inline-flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 28px;
+      height: 28px;
+      background: transparent;
+      border: 0;
+      padding: 0;
+      cursor: pointer;
+      color: currentColor;
+    }
+    .zara-menu-lines span {
+      display: block;
+      width: 18px;
+      height: 1px;
+      background: currentColor;
+      transition: width 0.2s, background-color 0.2s;
+    }
+    .zara-menu-lines:hover span { background: var(--orange); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .nav-links a {
+      position: relative;
+      padding: 4px 0;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--orange); }
+
+    .search-form {
+      display: flex;
+      align-items: center;
+      width: min(240px, 22vw);
+      min-width: 150px;
+      border-bottom: 1px solid var(--line-strong);
+      transition: border-color 0.2s;
+    }
+    .search-form:focus-within { border-color: var(--orange); }
+    .search-form input {
+      width: 100%;
+      min-width: 0;
+      padding: 6px 4px;
+      border: 0;
+      outline: 0;
+      background: transparent;
+      color: var(--ink);
+      font-size: 11px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .search-form input::placeholder { color: var(--muted); }
+    .search-form button {
+      padding: 5px;
+      border: 0;
+      background: transparent;
+      color: var(--ink);
+      cursor: pointer;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+    .header-icon-trigger {
+      background: transparent;
+      border: 0;
+      padding: 6px;
+      color: var(--ink);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.2s;
+    }
+    .header-icon-trigger:hover { color: var(--orange); }
+
+    /* Exact Zara Rectangular Bracket Bag [ 0 ] (Used in Main Header, PLP & PDP) */
+    .zara-bracket-bag-btn {
+      background: transparent;
+      border: 0;
+      padding: 6px 2px;
+      cursor: pointer;
+      color: currentColor;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.2s, transform 0.2s;
+    }
+    .zara-bracket-bag-btn:hover { color: var(--orange); }
+    .zara-bag-bracket {
+      position: relative;
+      width: 24px;
+      height: 16px;
+      border: 1px solid currentColor;
+      border-top: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9.5px;
+      font-weight: 500;
+      line-height: 1;
+      letter-spacing: 0;
+    }
+    .zara-bag-bracket::before,
+    .zara-bag-bracket::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      width: 4px;
+      height: 1px;
+      background: currentColor;
+    }
+    .zara-bag-bracket::before { left: 0; }
+    .zara-bag-bracket::after { right: 0; }
+
+    /* ==========================================================================
+       03. HERO CAROUSEL (2 SLIDES: HOODIES & ZIPPERS — NO ARROW BUTTONS)
+       ========================================================================== */
+    .hero {
+      height: min(600px, 62vw);
+      min-height: 430px;
+      position: relative;
+      overflow: hidden;
+      background: #090909;
+      border-bottom: 1px solid var(--line);
+    }
+    .hero-slides { position: absolute; inset: 0; }
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.65s ease, visibility 0.65s;
+    }
+    .hero-slide.is-active { visibility: visible; opacity: 1; }
+    .hero-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 28%;
+      position: absolute;
+      inset: 0;
+      filter: contrast(1.06) brightness(0.62);
+      transform: scale(1.03);
+      transition: transform 6s ease-out;
+    }
+    .hero-slide.is-active img { transform: scale(1); }
+    .hero-slide::after {
+      content: "";
+      position: absolute;
+      z-index: 1;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.45) 55%, rgba(0,0,0,0.18) 100%);
+      pointer-events: none;
+    }
+    .hero-content {
+      position: absolute;
+      z-index: 2;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--orange);
+    }
+    .hero h1 {
+      font-family: var(--display);
+      font-weight: 900;
+      max-width: 780px;
+      margin: 12px 0;
+      font-size: clamp(42px, 7vw, 94px);
+      line-height: 0.88;
+      letter-spacing: -0.055em;
+      text-transform: uppercase;
+      color: var(--orange);
+    }
+    .hero h1 em { font-style: normal; color: var(--ink); display: block; }
+    .hero p { max-width: 420px; margin: 6px 0 22px; font-size: 13.5px; line-height: 1.6; color: #dcdcdc; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 44px;
+      padding: 0 22px;
+      border: 1px solid var(--orange);
+      background: var(--orange);
+      color: #000000;
+      font-family: var(--display);
+      font-size: 10.5px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .button:hover { background: #ffffff; border-color: #ffffff; color: #000000; }
+    .button-outline { background: transparent; color: var(--ink); border: 1px solid var(--line-strong); }
+    .button-outline:hover { background: var(--ink); border-color: var(--ink); color: #000000; }
+
+    .hero-dots {
+      position: absolute;
+      z-index: 3;
+      bottom: 24px;
+      left: 50%;
+      display: flex;
+      gap: 8px;
+      transform: translateX(-50%);
+    }
+    .hero-dot { width: 28px; height: 3px; padding: 0; border: 0; background: rgba(255, 255, 255, 0.32); cursor: pointer; transition: background 0.2s, width 0.2s; }
+    .hero-dot[aria-current="true"] { width: 48px; background: var(--orange); }
+
+    /* ==========================================================================
+       04. NON-SIDE-SCROLLING 2-PANEL SHOWCASE (STRICTLY HOODIES & ZIPPERS)
+       ========================================================================== */
+    .sell-showcase {
+      padding: 40px 0 36px;
+      border-bottom: 1px solid var(--line);
+      background: #050505;
+    }
+    .sell-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+    .sell-head-left {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .sell-head-title {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin: 0;
+    }
+    .sell-head-sub {
+      font-size: 10.5px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .sell-two-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .sell-card {
+      position: relative;
+      aspect-ratio: 16 / 10;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .sell-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.68) contrast(1.06);
+      transition: transform 0.65s var(--ease-out), filter 0.4s;
+    }
+    .sell-card:hover img {
+      transform: scale(1.04);
+      filter: brightness(0.82) contrast(1.08);
+    }
+    .sell-card-overlay {
+      position: absolute;
+      inset: 0;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: linear-gradient(180deg, rgba(0,0,0,0.22) 0%, rgba(0,0,0,0.82) 100%);
+    }
+    .sell-card-kicker {
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--orange);
+    }
+    .sell-card-bottom h3 {
+      margin: 0 0 6px;
+      font-family: var(--display);
+      font-size: clamp(18px, 2.4vw, 26px);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+    .sell-card-bottom p {
+      margin: 0 0 12px;
+      font-size: 11.5px;
+      color: #d0d0d0;
+      line-height: 1.45;
+      max-width: 420px;
+    }
+    .zara-pill-cta {
+      display: inline-block;
+      padding: 5px 11px;
+      border: 1px solid rgba(255, 255, 255, 0.75);
+      background: rgba(0, 0, 0, 0.55);
+      color: #ffffff;
+      font-size: 9.5px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .sell-card:hover .zara-pill-cta {
+      background: #ffffff;
+      color: #000000;
+      border-color: #ffffff;
+    }
+
+    /* ==========================================================================
+       05. ZARA-INSPIRED CATEGORY BAR, PLP VIEW & PRODUCT CARDS (SCREENSHOTS 75, 76, 78)
+       ========================================================================== */
+    .shop { padding: 48px 0 96px; }
+
+    /* Dedicated Zara PLP Page Container (#plp) */
+    .plp-section {
+      min-height: 100vh;
+      background: var(--pdp-bg);
+      color: var(--pdp-ink);
+      padding-bottom: 96px;
+      transition: background-color 0.25s ease, color 0.25s ease;
+    }
+    .zara-plp-sticky-header {
+      position: sticky;
+      top: 0;
+      z-index: 28;
+      background: var(--pdp-bg);
+      border-bottom: 1px solid var(--pdp-line);
+    }
+    .zara-plp-top-row {
+      height: 52px;
+      padding: 0 16px;
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .zara-plp-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .zara-plp-right {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+    /* Zoom1 [ ▢ ] vs Zoom2 [ ▯▯ ] Toggle Icon from Screenshot 76 & 78 */
+    .zara-zoom-toggle-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5px;
+      height: 24px;
+      padding: 0 4px;
+      background: transparent;
+      border: 0;
+      color: var(--pdp-ink);
+      cursor: pointer;
+    }
+    .zara-zoom-toggle-btn .box-double {
+      display: block;
+      width: 5.5px;
+      height: 12px;
+      border: 1px solid currentColor;
+    }
+    .zara-zoom-toggle-btn .box-single {
+      display: block;
+      width: 10px;
+      height: 11px;
+      border: 1px solid currentColor;
+    }
+    .zara-plp-text-btn {
+      background: transparent;
+      border: 0;
+      padding: 4px 0;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--pdp-ink);
+      cursor: pointer;
+    }
+    /* Second Row of PLP Header: VIEW ALL   HOODIES   ZIPPERS (Exact Screenshot 78 Match) */
+    .zara-plp-cat-row {
+      padding: 4px 16px 12px;
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .zara-plp-tabs {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      overflow-x: auto;
+    }
+    .zara-plp-tab {
+      background: transparent;
+      border: 0;
+      padding: 2px 0;
+      font-size: 11.5px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--pdp-muted);
+      font-weight: 400;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: color 0.15s;
+    }
+    .zara-plp-tab.active {
+      color: var(--pdp-ink);
+      font-weight: 700;
+    }
+    /* Collapsible Search & Filter Bars inside PLP */
+    .zara-plp-search-bar {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 10px 16px 14px;
+      border-top: 1px solid var(--pdp-line);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .zara-plp-search-bar input {
+      flex: 1;
+      border: 0;
+      border-bottom: 1px solid var(--pdp-border-strong);
+      background: transparent;
+      color: var(--pdp-ink);
+      padding: 6px 0;
+      font-size: 11.5px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      outline: none;
+    }
+    .zara-plp-search-bar input::placeholder {
+      color: var(--pdp-muted);
+    }
+    .zara-plp-filter-panel {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 12px 16px;
+      border-top: 1px solid var(--pdp-line);
+      background: var(--pdp-surface);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+      font-size: 10.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .zara-filter-chip {
+      padding: 5px 10px;
+      border: 1px solid var(--pdp-line);
+      background: transparent;
+      color: var(--pdp-ink);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+    }
+    .zara-filter-chip.active {
+      background: var(--pdp-ink);
+      color: var(--pdp-bg);
+      border-color: var(--pdp-ink);
+      font-weight: 600;
+    }
+
+    /* Zara Category Sub-Toolbar on Home */
+    .zara-category-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding-bottom: 18px;
+      margin-bottom: 28px;
+      border-bottom: 1px solid var(--line);
+      flex-wrap: wrap;
+    }
+    .zara-filter-tabs {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      overflow-x: auto;
+    }
+    .filter {
+      padding: 4px 0;
+      background: transparent;
+      color: var(--muted);
+      border: 0;
+      border-bottom: 1px solid transparent;
+      font-size: 11px;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .filter:hover { color: var(--ink); }
+    .filter.active {
+      color: var(--ink);
+      font-weight: 700;
+      border-bottom-color: var(--orange);
+    }
+
+    .zara-toolbar-right {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-left: auto;
+    }
+    .zara-grid-toggle-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      background: transparent;
+      border: 0;
+      padding: 4px;
+      cursor: pointer;
+      color: var(--ink);
+      opacity: 0.85;
+      transition: opacity 0.2s, color 0.2s;
+    }
+    .zara-grid-toggle-btn:hover { opacity: 1; color: var(--orange); }
+    .zara-grid-toggle-btn span {
+      display: block;
+      width: 6px;
+      height: 13px;
+      border: 1px solid currentColor;
+    }
+    .zara-filters-label-btn {
+      background: transparent;
+      border: 0;
+      padding: 4px 0;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink);
+      cursor: pointer;
+    }
+    .zara-filters-label-btn:hover { color: var(--orange); }
+
+    /* Product Grid: 4 Columns on Desktop, 2 Columns on Mobile (or Zoom1 Editorial Asymmetric Grid like Screenshot 78) */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 38px 14px;
+    }
+    .product-grid.grid-density-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 44px 20px;
+    }
+    /* Zoom-1 Asymmetric Editorial Grid (Matches Screenshot 78 with larger primary cards + paired row) */
+    .plp-grid-wrap {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 16px 16px 48px;
+    }
+    .product-grid.plp-zoom-1 {
+      grid-template-columns: 1.38fr 0.82fr;
+      gap: 34px 12px;
+      align-items: start;
+    }
+
+    /* EXACT ZARA PRODUCT CARD (MATCHING SCREENSHOTS 75, 76, 78) */
+    .zara-card {
+      display: flex;
+      flex-direction: column;
+      background: transparent;
+      cursor: pointer;
+    }
+    .zara-card-media {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 3 / 4.15;
+      background: #dcdad5;
+      overflow: hidden;
+    }
+    .zara-card-media img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: opacity 0.4s var(--ease-out), transform 0.65s var(--ease-out);
+    }
+    .zara-card-media .img-front { opacity: 1; z-index: 1; }
+    .zara-card-media .img-back { opacity: 0; z-index: 2; }
+    @media (hover: hover) and (pointer: fine) {
+      .zara-card:hover .zara-card-media .img-back { opacity: 1; transform: scale(1.03); }
+      .zara-card:hover .zara-card-media .img-front { transform: scale(1.03); }
+    }
+
+    /* Card Info Below Image: ORIGINS micro-label, Row 1 (Title + '+'), Row 2 (Price / Markdown Badge), Row 3 (■ ■ Swatches) */
+    .zara-card-info {
+      padding-top: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .zara-card-origins {
+      font-size: 8.5px;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--pdp-muted, var(--muted));
+      line-height: 1.2;
+    }
+    .zara-card-row-1 {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .zara-card-title {
+      margin: 0;
+      font-size: 10.5px;
+      font-weight: 400;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: currentColor;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    /* Minimal '+' Button on Right of Title Row (Exact Screenshot 75 & 78 Match) */
+    .zara-card-plus-btn {
+      width: 20px;
+      height: 20px;
+      background: transparent;
+      border: 0;
+      padding: 0;
+      color: currentColor;
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      cursor: pointer;
+      transition: color 0.15s, transform 0.15s;
+    }
+    .zara-card-plus-btn:hover {
+      color: var(--orange);
+      transform: scale(1.15);
+    }
+
+    /* Price & Markdown Row (Strikethrough + High-Contrast -46% ₹ 2,950.00 Badge) */
+    .zara-card-price-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 3px;
+      font-size: 10.5px;
+      letter-spacing: 0.02em;
+    }
+    .zara-price-regular {
+      color: currentColor;
+      font-weight: 400;
+    }
+    .zara-price-old {
+      color: var(--pdp-muted, var(--muted));
+      text-decoration: line-through;
+      font-size: 10px;
+    }
+    .zara-price-discount-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 1.5px 5px;
+      background: currentColor;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    /* Minimal Square Color Swatches Row (■ ■) */
+    .zara-card-swatches {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 4px;
+    }
+    .zara-swatch-dot {
+      width: 8px;
+      height: 8px;
+      border: 1px solid rgba(128, 128, 128, 0.4);
+      display: inline-block;
+    }
+
+    /* Sold Out State on Zara Card */
+    .zara-card.is-sold .zara-card-media img {
+      filter: grayscale(1);
+      opacity: 0.45;
+    }
+    .sold-overlay-stamp {
+      position: absolute;
+      z-index: 3;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      pointer-events: none;
+    }
+    .sold-overlay-stamp span {
+      padding: 6px 12px;
+      background: rgba(0, 0, 0, 0.88);
+      border: 1px solid #ffffff;
+      color: #ffffff;
+      font-size: 9.5px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* ==========================================================================
+       06. RESPONSIVE ZARA PDP (2-COL DESKTOP: IMAGES LEFT / ALL TEXT RIGHT + MOBILE)
+       ========================================================================== */
+    .pdp-section {
+      padding: 0 0 110px;
+      background: var(--pdp-bg);
+      color: var(--pdp-ink);
+      min-height: 100vh;
+      transition: background-color 0.25s ease, color 0.25s ease;
+    }
+
+    /* Top Control Bar for Navigating Back & Testing Mobile/Desktop Views */
+    .pdp-control-bar {
+      background: #0d0d0d;
+      color: #ffffff;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+      padding: 9px 0;
+      font-size: 11px;
+    }
+    .pdp-control-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .pdp-back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      background: #1a1a1a;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      color: #ffffff;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .pdp-back-btn:hover { border-color: var(--orange); color: var(--orange); }
+
+    .sim-toggle-btn {
+      padding: 5px 10px;
+      background: #1a1a1a;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      color: #e5e5e5;
+      font-size: 9.5px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .sim-toggle-btn:hover, .sim-toggle-btn.active {
+      background: var(--orange);
+      border-color: var(--orange);
+      color: #000000;
+      font-weight: 800;
+    }
+
+    /* PDP Sub-Header (=, Search, [ 0 ] Bracket Bag) */
+    .zara-pdp-subheader {
+      height: 50px;
+      padding: 0 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--pdp-line);
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+
+    /* DESKTOP / PC 2-COLUMN ZARA LAYOUT:
+       Left Column (~62% width): Vertical Stack of All Product Images + Sticky Mini Index Strip
+       Right Column (~38% width): Sticky Editorial Panel with ALL Text, Price, Buttons, Tabs, Measurements & Accordions */
+    .zara-pdp-desktop-container {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 28px 28px 56px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.55fr) minmax(380px, 0.95fr);
+      gap: clamp(32px, 4.5vw, 68px);
+      align-items: start;
+    }
+
+    /* Left Column: Images Wrapper (Sticky Thumbnail Rail + Vertical High-Res Image Stack) */
+    .zara-desktop-left-media {
+      display: grid;
+      grid-template-columns: 54px minmax(0, 1fr);
+      gap: 16px;
+      align-items: start;
+    }
+    .zara-desktop-thumb-rail {
+      position: sticky;
+      top: 96px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .zara-thumb-btn {
+      position: relative;
+      width: 54px;
+      aspect-ratio: 4 / 5;
+      padding: 0;
+      border: 1px solid var(--pdp-line);
+      background: var(--pdp-studio-bg);
+      cursor: pointer;
+      overflow: hidden;
+      opacity: 0.58;
+      transition: opacity 0.2s, border-color 0.2s;
+    }
+    .zara-thumb-btn:hover,
+    .zara-thumb-btn.active {
+      opacity: 1;
+      border-color: var(--pdp-border-strong);
+    }
+    .zara-thumb-btn img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .zara-thumb-index {
+      position: absolute;
+      bottom: 2px;
+      right: 3px;
+      font-size: 8px;
+      font-weight: 700;
+      padding: 1px 3px;
+      background: rgba(0, 0, 0, 0.72);
+      color: #ffffff;
+      line-height: 1;
+    }
+
+    /* Vertical Editorial Lookbook Stack on Left */
+    .zara-desktop-gallery {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .zara-desktop-shot {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      background: var(--pdp-studio-bg);
+      border: 1px solid var(--pdp-line);
+      overflow: hidden;
+    }
+    .zara-desktop-shot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .zara-shot-badge {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      padding: 4px 9px;
+      background: rgba(0, 0, 0, 0.78);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      pointer-events: none;
+    }
+
+    /* Right Column: Sticky Editorial Buy & Complete Text Specification Panel on Desktop */
+    .zara-desktop-buy-col {
+      position: sticky;
+      top: 90px;
+      display: flex;
+      flex-direction: column;
+      padding: 24px 26px;
+      background: var(--pdp-bg);
+      border: 1px solid var(--pdp-line);
+    }
+    .zara-right-kicker {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--pdp-muted);
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--pdp-line);
+    }
+    .zara-archive-code-strip {
+      margin-top: 12px;
+      padding: 9px 12px;
+      background: var(--pdp-surface);
+      border: 1px solid var(--pdp-line);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 10px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--pdp-ink);
+    }
+
+    /* Shared Zara Typography & Interactive Elements */
+    .zara-title-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .zara-pdp-title {
+      margin: 0;
+      font-size: 15px;
+      line-height: 20px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--pdp-ink);
+    }
+    .zara-swatch-trigger {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 10.5px;
+      color: var(--pdp-muted);
+      background: transparent;
+      border: 0;
+      padding: 0;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .zara-swatch-square {
+      width: 10px;
+      height: 10px;
+      display: inline-block;
+      border: 1px solid var(--pdp-border-strong);
+    }
+    .zara-pdp-price-row {
+      margin-top: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .zara-pdp-price {
+      font-size: 14px;
+      line-height: 19px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      color: var(--pdp-ink);
+    }
+    .zara-pdp-tax {
+      margin-top: 3px;
+      font-size: 9px;
+      line-height: 12px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--pdp-muted);
+    }
+
+    /* 1-of-1 Size Selector Box on Desktop PDP */
+    .zara-size-box {
+      margin-top: 16px;
+      padding: 12px 0;
+      border-top: 1px solid var(--pdp-line);
+      border-bottom: 1px solid var(--pdp-line);
+    }
+    .zara-size-option {
+      width: 100%;
+      padding: 9px 12px;
+      border: 1px solid var(--pdp-border-strong);
+      background: transparent;
+      color: var(--pdp-ink);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 10.5px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* Sharp Rectangular Bordered Zara ADD Button */
+    .zara-rect-add-btn {
+      width: 100%;
+      height: 40px;
+      margin-top: 14px;
+      background: transparent;
+      border: 1px solid var(--pdp-border-strong);
+      color: var(--pdp-ink);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background-color 0.15s ease, color 0.15s ease;
+    }
+    .zara-rect-add-btn:hover {
+      background: var(--pdp-ink);
+      color: var(--pdp-bg);
+    }
+    .zara-rect-add-btn:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+
+    .zara-rect-instant-btn {
+      width: 100%;
+      height: 40px;
+      margin-top: 8px;
+      background: var(--pdp-ink);
+      border: 1px solid var(--pdp-border-strong);
+      color: var(--pdp-bg);
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+    .zara-rect-instant-btn:hover { opacity: 0.86; }
+
+    /* Horizontal Interactive Tab Strip (DESCRIPTION | COMPOSITION | MEASUREMENTS | THRIFT GRADE) */
+    .zara-tabs-section {
+      padding: 18px 0 10px;
+    }
+    .zara-tab-strip {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--pdp-line);
+    }
+    .zara-tab-btn {
+      background: transparent;
+      border: 0;
+      padding: 0;
+      font-size: 10.5px;
+      line-height: 14px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--pdp-muted);
+      white-space: nowrap;
+      cursor: pointer;
+      transition: color 0.15s;
+    }
+    .zara-tab-btn.active {
+      color: var(--pdp-ink);
+      font-weight: 700;
+    }
+    .zara-tab-panel {
+      padding-top: 14px;
+      font-size: 11.5px;
+      line-height: 17.5px;
+      color: var(--pdp-ink);
+    }
+
+    /* Utility Accordions (+ icon rotates on open) */
+    .zara-utility-links {
+      border-top: 1px solid var(--pdp-line);
+      margin-top: 12px;
+    }
+    .zara-utility-item {
+      border-bottom: 1px solid var(--pdp-line);
+    }
+    .zara-utility-trigger {
+      width: 100%;
+      padding: 13px 0;
+      background: transparent;
+      border: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      text-align: left;
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--pdp-ink);
+      cursor: pointer;
+    }
+    .zara-utility-trigger span.plus-icon {
+      font-size: 15px;
+      font-weight: 300;
+      transition: transform 0.2s ease;
+    }
+    .zara-utility-item.open span.plus-icon {
+      transform: rotate(45deg);
+    }
+    .zara-utility-body {
+      display: none;
+      padding-bottom: 14px;
+      font-size: 11px;
+      line-height: 16.5px;
+      color: var(--pdp-muted);
+    }
+    .zara-utility-item.open .zara-utility-body {
+      display: block;
+    }
+
+    /* MOBILE SINGLE-COLUMN SHELL (Interleaved Shot 1 -> Summary -> Tabs -> Shots 2,3,4) */
+    .zara-pdp-mobile-shell {
+      display: none;
+      max-width: 425px;
+      margin: 0 auto;
+      background: var(--pdp-bg);
+      color: var(--pdp-ink);
+      border-left: 1px solid var(--pdp-line);
+      border-right: 1px solid var(--pdp-line);
+    }
+
+    /* Dismissible Top App Banner on Mobile PDP */
+    .zara-app-banner {
+      padding: 11px 16px;
+      border-bottom: 1px solid var(--pdp-line);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .zara-app-logo-box {
+      width: 34px;
+      height: 34px;
+      border: 1px solid var(--pdp-line);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--display);
+      font-weight: 900;
+      font-size: 8.5px;
+      line-height: 0.85;
+      letter-spacing: -0.05em;
+      color: var(--pdp-accent);
+      text-align: center;
+      flex-shrink: 0;
+    }
+    .zara-app-open-btn {
+      padding: 8px 14px;
+      background: var(--pdp-ink);
+      color: var(--pdp-bg);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: 0;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    /* Bottom Recommendations Section on PDP (Responsive: 3 Cols on Mobile, 6 Cols on Desktop) */
+    .zara-pdp-recommendations-wrap {
+      max-width: 1380px;
+      margin: 0 auto;
+      padding: 28px 24px 48px;
+      border-top: 1px solid var(--pdp-line);
+    }
+    .zara-section-heading {
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--pdp-ink);
+      margin: 0 0 20px;
+      font-weight: 500;
+    }
+    .zara-rec-grid {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 28px 14px;
+    }
+    .zara-mini-card {
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+    }
+    .zara-mini-media {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      background: var(--pdp-studio-bg);
+      overflow: hidden;
+      position: relative;
+    }
+    .zara-mini-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s var(--ease-out);
+    }
+    .zara-mini-media:hover img {
+      transform: scale(1.04);
+    }
+
+    /* Force Mobile 425px Preview Mode on Desktop when User Toggles It */
+    body.pdp-force-mobile .zara-pdp-desktop-container,
+    body.pdp-force-mobile .zara-pdp-subheader {
+      display: none !important;
+    }
+    body.pdp-force-mobile .zara-pdp-mobile-shell {
+      display: block !important;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+    }
+    body.pdp-force-mobile .zara-pdp-recommendations-wrap {
+      max-width: 425px;
+      padding: 22px 16px 40px;
+      border-left: 1px solid var(--pdp-line);
+      border-right: 1px solid var(--pdp-line);
+    }
+    body.pdp-force-mobile .zara-rec-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px 10px;
+    }
+
+    /* Exact Zara Sticky Bottom Bar (73% Bordered ADD Button + 27% Price) */
+    .mobile-sticky-buybar {
+      position: fixed;
+      z-index: 35;
+      left: 50%;
+      bottom: 0;
+      transform: translate(-50%, 105%);
+      width: 100%;
+      max-width: 425px;
+      background: var(--pdp-bg);
+      color: var(--pdp-ink);
+      border-top: 1px solid var(--pdp-line);
+      padding: 10px 16px;
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      transition: transform 0.24s var(--ease-out);
+      box-shadow: 0 -8px 28px rgba(0, 0, 0, 0.22);
+    }
+    body.is-pdp-open.pdp-force-mobile .mobile-sticky-buybar {
+      display: flex;
+    }
+    body.is-pdp-open .mobile-sticky-buybar.is-visible {
+      transform: translate(-50%, 0);
+    }
+    .zara-sticky-add-btn {
+      width: 73%;
+      height: 36px;
+      background: transparent;
+      border: 1px solid var(--pdp-border-strong);
+      color: var(--pdp-ink);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background-color 0.15s, color 0.15s;
+    }
+    .zara-sticky-add-btn:hover {
+      background: var(--pdp-ink);
+      color: var(--pdp-bg);
+    }
+    .zara-sticky-price {
+      width: 27%;
+      text-align: right;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--pdp-ink);
+      white-space: nowrap;
+    }
+
+    /* Unit Toggle Pills inside Measurements Tab */
+    .unit-toggle { display: inline-flex; border: 1px solid var(--pdp-line); }
+    .unit-btn {
+      padding: 3px 8px;
+      font-size: 9.5px;
+      font-weight: 700;
+      background: transparent;
+      color: var(--pdp-muted);
+      border: 0;
+      cursor: pointer;
+    }
+    .unit-btn.active {
+      background: var(--pdp-ink);
+      color: var(--pdp-bg);
+    }
+
+    /* ==========================================================================
+       07. MANIFESTO, NEWSLETTER, FOOTER, DRAWERS & MODALS
+       ========================================================================== */
+    .manifesto { display: grid; grid-template-columns: 1fr 1fr; min-height: 420px; background: var(--surface); border-block: 1px solid var(--line); }
+    .manifesto-copy { display: flex; flex-direction: column; justify-content: center; padding: clamp(32px, 6vw, 88px); }
+    .manifesto h2 {
+      font-family: var(--display);
+      font-weight: 900;
+      max-width: 520px;
+      margin: 14px 0;
+      font-size: clamp(36px, 4.8vw, 64px);
+      line-height: 0.9;
+      letter-spacing: -0.055em;
+      text-transform: uppercase;
+      color: var(--orange);
+    }
+    .manifesto h2 em { font-style: normal; color: var(--ink); display: block; }
+    .manifesto p { max-width: 410px; font-size: 13.5px; line-height: 1.7; color: #d4d4d4; margin-bottom: 24px; }
+    .manifesto-photo { min-height: 340px; overflow: hidden; border-left: 1px solid var(--line); }
+    .manifesto-photo img { display: block; width: 100%; height: 100%; object-fit: cover; filter: contrast(1.06); }
+
+    .newsletter { display: flex; align-items: center; justify-content: space-between; gap: 35px; padding: 76px 0; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+    .newsletter h2 {
+      font-family: var(--display);
+      font-weight: 900;
+      margin: 8px 0;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 0.94;
+      letter-spacing: -0.05em;
+      text-transform: uppercase;
+      color: var(--orange);
+    }
+    .newsletter p { margin: 0; color: var(--muted); font-size: 13px; }
+    .newsletter-form { display: flex; width: min(440px, 100%); border-bottom: 1px solid var(--ink); }
+    .newsletter-form input { flex: 1; min-width: 0; padding: 14px 0; border: 0; outline: 0; background: transparent; color: var(--ink); font-size: 12px; letter-spacing: 0.04em; }
+    .newsletter-form button { border: 0; background: transparent; color: var(--orange); font-family: var(--display); font-size: 11px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.08em; cursor: pointer; }
+
+    .footer { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 28px 0 42px; font-size: 10.5px; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; flex-wrap: wrap; }
+    .footer-links { display: flex; gap: 24px; font-weight: 600; color: var(--ink); }
+    .footer-links a:hover { color: var(--orange); }
+
+    /* Slide-out Drawers & Modals */
+    .drawer-backdrop {
+      position: fixed;
+      z-index: 40;
+      inset: 0;
+      visibility: hidden;
+      background: rgba(0, 0, 0, 0.76);
+      backdrop-filter: blur(4px);
+      opacity: 0;
+      transition: opacity 0.25s, visibility 0.25s;
+    }
+    .drawer-backdrop.open { visibility: visible; opacity: 1; }
+
+    .side-drawer {
+      position: fixed;
+      z-index: 45;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      width: min(410px, 100%);
+      flex-direction: column;
+      padding: 26px;
+      background: var(--surface);
+      border-left: 1px solid var(--line-strong);
+      transform: translate3d(102%, 0, 0);
+      transition: transform 0.35s var(--ease-out);
+    }
+    .side-drawer.open { transform: translate3d(0, 0, 0); }
+    .drawer-head { display: flex; align-items: center; justify-content: space-between; padding-bottom: 18px; border-bottom: 1px solid var(--line); }
+    .drawer-head h2 { font-family: var(--display); font-weight: 900; margin: 0; font-size: 18px; letter-spacing: -0.03em; text-transform: uppercase; color: var(--ink); }
+    .close-button { width: 34px; height: 34px; border: 1px solid var(--line); background: transparent; color: var(--ink); font-size: 18px; cursor: pointer; transition: border-color 0.2s, color 0.2s; }
+    .close-button:hover { border-color: var(--orange); color: var(--orange); }
+
+    .cart-items { flex: 1; overflow-y: auto; }
+    .cart-item { display: grid; grid-template-columns: 68px 1fr auto; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+    .cart-item img { width: 68px; height: 88px; object-fit: cover; background: #dcdad5; }
+    .cart-item h3 { margin: 2px 0 4px; font-size: 11.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
+    .cart-item .cart-meta { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+    .cart-item .cart-price { margin-top: 6px; font-size: 11.5px; font-weight: 600; color: var(--ink); }
+    .remove-item { align-self: start; padding: 4px; border: 0; background: transparent; color: var(--muted); font-size: 10px; text-transform: uppercase; text-decoration: underline; cursor: pointer; }
+    .remove-item:hover { color: var(--orange); }
+
+    .cart-total { display: flex; justify-content: space-between; padding: 18px 0; border-top: 1px solid var(--line-strong); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; }
+
+    .modal-overlay {
+      position: fixed;
+      z-index: 50;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.84);
+      backdrop-filter: blur(6px);
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.25s, visibility 0.25s;
+    }
+    .modal-overlay.open { opacity: 1; visibility: visible; }
+    .modal-card { width: min(520px, 100%); max-height: 90vh; overflow-y: auto; background: var(--surface); border: 1px solid var(--line-strong); padding: 28px; position: relative; }
+    .form-grid { display: grid; gap: 14px; margin-top: 18px; }
+    .form-label { display: grid; gap: 6px; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #d4d4d4; }
+    .form-input { width: 100%; padding: 12px; background: #000000; border: 1px solid var(--line-strong); color: var(--ink); font-size: 12.5px; }
+    .form-input:focus { border-color: var(--orange); outline: none; }
+
+    .toast {
+      position: fixed;
+      z-index: 60;
+      right: 20px;
+      bottom: 20px;
+      padding: 13px 18px;
+      background: var(--ink);
+      color: var(--paper);
+      font-size: 10.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+      opacity: 0;
+      transform: translate3d(0, 12px, 0);
+      pointer-events: none;
+      transition: opacity 0.25s, transform 0.25s var(--ease-out);
+    }
+    .toast.show { opacity: 1; transform: translate3d(0, 0, 0); }
+    body.is-pdp-open .toast { bottom: 68px; }
+
+    /* ==========================================================================
+       08. RESPONSIVE BREAKPOINTS (DESKTOP vs TABLET vs MOBILE)
+       ========================================================================== */
+    @media (max-width: 1120px) {
+      .product-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .zara-pdp-desktop-container {
+        grid-template-columns: minmax(0, 1.25fr) minmax(340px, 0.95fr);
+        gap: 28px;
+      }
+      .zara-desktop-left-media {
+        grid-template-columns: 1fr;
+      }
+      .zara-desktop-thumb-rail {
+        display: none;
+      }
+      .zara-rec-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 1023px) {
+      .wrap { width: calc(100% - 28px); }
+      .header { height: auto; min-height: 58px; padding-block: 8px; }
+      .nav-links { display: none; }
+      .nav { flex-wrap: wrap; gap: 8px 12px; }
+      .search-form { order: 3; width: 100%; min-width: 0; }
+      .header-actions { margin-left: auto; gap: 14px; }
+      .hero { height: 60vh; min-height: 400px; max-height: 540px; }
+      .hero-content { justify-content: flex-end; padding-bottom: 54px; }
+      .hero-dots { bottom: 20px; left: 16px; transform: none; }
+      .sell-two-grid { grid-template-columns: 1fr; gap: 12px; }
+      .shop { padding: 32px 0 72px; }
+      .product-grid,
+      .product-grid.grid-density-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 28px 10px;
+      }
+      .product-grid.plp-zoom-1 {
+        grid-template-columns: 1.42fr 0.78fr;
+        gap: 28px 8px;
+      }
+      .manifesto { grid-template-columns: 1fr; }
+      .manifesto-photo { border-left: 0; border-top: 1px solid var(--line); min-height: 260px; }
+
+      /* Automatically switch PDP to Exact Mobile Single-Column Layout (< 1024px) */
+      .zara-pdp-desktop-container,
+      .zara-pdp-subheader {
+        display: none !important;
+      }
+      .zara-pdp-mobile-shell {
+        display: block !important;
+        max-width: 100%;
+        border: 0;
+      }
+      .zara-pdp-recommendations-wrap {
+        padding: 22px 16px 40px;
+      }
+      .zara-rec-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 24px 10px;
+      }
+      body.is-pdp-open .mobile-sticky-buybar {
+        display: flex;
+        max-width: 100%;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; }
+  </style>
+</head>
+<body class="pdp-theme-light">
+
+  <!-- STICKY HEADER (NO CURRENCY TOGGLE, NO WISHLIST, EXACT ZARA [ 0 ] BRACKET BAG) -->
+  <header class="header">
+    <nav class="nav wrap" aria-label="Main navigation">
+      <div class="nav-left">
+        <button class="zara-menu-lines" type="button" id="header-menu-btn" aria-label="Open Zara Product Listing Page">
+          <span></span>
+          <span></span>
+        </button>
+        <a class="oops-logo" href="#top" id="brand-home-link" aria-label="OOPS! CLUB™ Home">
+          <span class="row-top">OOPS!</span>
+          <span class="row-bottom">CLUB<span class="tm">TM</span></span>
+        </a>
+      </div>
+
+      <div class="nav-links">
+        <a href="#plp" data-filter-jump="all">VIEW ALL</a>
+        <a href="#plp" data-filter-jump="hoodies">HOODIES</a>
+        <a href="#plp" data-filter-jump="zippers">ZIPPERS</a>
+        <a href="#product/zara-quarter-zip-sweatshirt">ZARA PDP</a>
+        <a href="#story">MANIFESTO</a>
+      </div>
+
+      <form class="search-form" role="search" id="search-form">
+        <label class="sr-only" for="product-search">Search hoodies and zippers</label>
+        <input id="product-search" type="search" placeholder="SEARCH HOODIES, ZIPPERS..." autocomplete="off">
+        <button type="submit" aria-label="Search">
+          <svg width="14" height="14" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.2">
+            <circle cx="6.5" cy="6.5" r="5.2" />
+            <line x1="10.5" y1="10.5" x2="14" y2="14" />
+          </svg>
+        </button>
+      </form>
+
+      <div class="header-actions">
+        <button class="header-icon-trigger profile-button" type="button" aria-label="Your club profile" title="Member Profile">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="8" r="3.5"></circle><path d="M5 20c.8-3.6 3.3-5.4 7-5.4s6.2 1.8 7 5.4"></path></svg>
+        </button>
+        <!-- Exact Zara Rectangular Open-Top Bracket Bag [ 0 ] -->
+        <button class="zara-bracket-bag-btn bag-button" type="button" aria-label="Open shopping bag" title="Shopping Bag">
+          <div class="zara-bag-bracket">
+            <span class="bag-count" aria-live="polite">0</span>
+          </div>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <!-- HERO CAROUSEL (STRICTLY 2 SLIDES: HOODIES & ZIPPERS — NO ARROW BUTTONS) -->
+    <section class="hero" id="hero-section" aria-label="OOPS! CLUB featured drops" aria-roledescription="carousel">
+      <div class="hero-slides">
+        <!-- Slide 01: Hoodies -->
+        <article class="hero-slide is-active" aria-hidden="false">
+          <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=2000&q=85" alt="480gsm sunfaded boxy hoodies">
+          <div class="hero-content wrap">
+            <span class="eyebrow">01 // 480GSM–520GSM CROSS-GRAIN FLEECE</span>
+            <h1>ARCHIVE<br><em>HOODIES.</em></h1>
+            <p>Double-layered hoods, dropped shoulders, and authentic sun-washed patina. Every hoodie is 1-of-1—u miss it, u lose it.</p>
+            <div style="display:flex; gap:12px; flex-wrap:wrap;">
+              <a class="button" href="#plp" data-filter-jump="hoodies">Explore 1-of-1 Hoodies</a>
+              <a class="button button-outline" href="#plp" data-filter-jump="all">Open Zara PLP View</a>
+            </div>
+          </div>
+        </article>
+        <!-- Slide 02: Zippers -->
+        <article class="hero-slide" aria-hidden="true" inert>
+          <img src="https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?auto=format&fit=crop&w=2000&q=85" alt="Quarter-zips and vintage full-zip sweatshirts">
+          <div class="hero-content wrap">
+            <span class="eyebrow">02 // HIGH-NECK QUARTER-ZIPS &amp; FULL-ZIPS</span>
+            <h1>ARCHIVE<br><em>ZIPPERS.</em></h1>
+            <p>Heavy YKK brass hardware, ribbed funnel-neck collars, and boxy cropped proportions measured pit-to-pit.</p>
+            <div style="display:flex; gap:12px; flex-wrap:wrap;">
+              <a class="button" href="#plp" data-filter-jump="zippers">Explore 1-of-1 Zippers</a>
+              <button class="button button-outline" type="button" data-open-random-pdp>Inspect Quarter-Zip PDP</button>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="hero-dots" role="group" aria-label="Choose slide">
+        <button class="hero-dot" type="button" aria-label="Slide 1: Hoodies" aria-current="true"></button>
+        <button class="hero-dot" type="button" aria-label="Slide 2: Zippers" aria-current="false"></button>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- NON-SIDE-SCROLLING 2-PANEL SHOWCASE (ONLY HOODIES & ZIPPERS, NO ARROWS) -->
+    <!-- ===================================================================== -->
+    <section class="sell-showcase" id="showcase-section" aria-label="What we sell showcase">
+      <div class="wrap">
+        <div class="sell-head">
+          <div class="sell-head-left">
+            <h2 class="sell-head-title">WHAT WE SELL // CURRENT ARCHIVE FOCUS</h2>
+            <span class="sell-head-sub">01 HOODIES · 02 ZIPPERS (1-OF-1 CURATED)</span>
+          </div>
+        </div>
+
+        <div class="sell-two-grid">
+          <!-- Panel 01: Hoodies -->
+          <article class="sell-card" data-filter-jump="hoodies">
+            <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=1200&q=85" alt="1-of-1 Heavyweight Archive Hoodies">
+            <div class="sell-card-overlay">
+              <span class="sell-card-kicker">CATEGORY 01 // 480GSM+ FLEECE</span>
+              <div class="sell-card-bottom">
+                <h3>HOODIES</h3>
+                <p>Sun-faded boxy pullovers, reverse-weave fleece &amp; double-hooded heavyweight silhouettes.</p>
+                <span class="zara-pill-cta">EXPLORE HOODIES</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Panel 02: Zippers -->
+          <article class="sell-card" data-filter-jump="zippers">
+            <img src="https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?auto=format&fit=crop&w=1200&q=85" alt="Quarter-Zips and Full-Zip Jackets">
+            <div class="sell-card-overlay">
+              <span class="sell-card-kicker">CATEGORY 02 // QUARTER-ZIPS &amp; FULL-ZIPS</span>
+              <div class="sell-card-bottom">
+                <h3>ZIPPERS</h3>
+                <p>Ribbed funnel-neck quarter-zips, velvet zip-up jackets &amp; heavy YKK brass zip hoodies.</p>
+                <span class="zara-pill-cta">EXPLORE ZIPPERS</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- HOMEPAGE ROTATION SECTION (ONLY 2 CATEGORIES: HOODIES & ZIPPERS)       -->
+    <!-- ===================================================================== -->
+    <section class="shop wrap" id="shop">
+      <div class="zara-category-toolbar">
+        <div class="zara-filter-tabs no-scrollbar" role="group" aria-label="Filter hoodies and zippers">
+          <button class="filter active" type="button" data-home-filter="all" aria-pressed="true">VIEW ALL</button>
+          <button class="filter" type="button" data-home-filter="hoodies" aria-pressed="false">HOODIES</button>
+          <button class="filter" type="button" data-home-filter="zippers" aria-pressed="false">ZIPPERS</button>
+        </div>
+
+        <div class="zara-toolbar-right">
+          <button type="button" class="zara-grid-toggle-btn" id="grid-density-toggle" title="Switch 2-Column / 4-Column Grid View" aria-label="Toggle grid columns">
+            <span></span>
+            <span></span>
+          </button>
+          <button type="button" class="zara-filters-label-btn" data-filter-jump="all">
+            OPEN ZARA PLP <span id="active-count-label" style="color:var(--muted);"></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Zara Product Cards Grid -->
+      <div class="product-grid" id="product-grid"></div>
+
+      <p class="empty-state" id="empty-state" style="display:none; padding:48px 0; text-align:center; font-family:var(--display); font-size:18px; color:var(--muted);">
+        OOPS, NOTHING IN THIS FILTER. TRY "VIEW ALL".
+      </p>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- DEDICATED ZARA PRODUCT LISTING PAGE (PLP) VIEW (#plp)                 -->
+    <!-- (MATCHING SCREENSHOT 76 & SCREENSHOT 78 — OPENS ON SEARCH / CATEGORY) -->
+    <!-- ===================================================================== -->
+    <section class="plp-section" id="plp-page" aria-live="polite" hidden></section>
+
+    <!-- ===================================================================== -->
+    <!-- RESPONSIVE ZARA PRODUCT DETAIL PAGE (DESKTOP 3-COL + MOBILE STACKED)  -->
+    <!-- ===================================================================== -->
+    <section class="pdp-section" id="product-page" aria-live="polite" hidden></section>
+
+    <!-- BRAND MANIFESTO -->
+    <section class="manifesto" id="story">
+      <div class="manifesto-copy">
+        <span class="eyebrow">OOPS! CLUB™ // @OOPSCLUB_OFFICIAL</span>
+        <h2>GOOD TASTE.<br><em>BETTER HISTORY.</em></h2>
+        <p>Right now our rotation is strictly dedicated to heavyweight vintage hoodies and statement zippers. Every fade, broken-in cuff, and patina tells a story. Hand-picked, steam-sanitized, measured flat, and shipped across India in custom OOPS! CLUB™ packaging.</p>
+        <a class="button" href="#plp" data-filter-jump="all" style="align-self:flex-start;">Browse Hoodies &amp; Zippers <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="manifesto-photo">
+        <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=1200&q=85" alt="Curated vintage archive rack of hoodies and zippers" loading="lazy">
+      </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="newsletter wrap" id="newsletter">
+      <div>
+        <span class="eyebrow">FIRST DIBS ON 1-OF-1 HOODIE &amp; ZIPPER DROPS</span>
+        <h2>U MISS IT,<br>U LOSE IT.</h2>
+        <p>Get notified 15 minutes before new 1-of-1 hoodies and quarter-zips hit the rotation.</p>
+      </div>
+      <form class="newsletter-form" id="newsletter-form">
+        <label class="sr-only" for="newsletter-email">Email address</label>
+        <input id="newsletter-email" type="email" placeholder="ENTER YOUR EMAIL ADDRESS..." required>
+        <button type="submit">JOIN CLUB ↗</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer wrap">
+    <span>© 2026 OOPS! CLUB™ (OOPSCLUB.IN · @OOPSCLUB_OFFICIAL). U MISS IT, U LOSE IT.</span>
+    <div class="footer-links">
+      <a href="#plp" data-filter-jump="all">Zara PLP</a>
+      <a href="#story">Manifesto</a>
+      <a href="#top">Top ↑</a>
+    </div>
+  </footer>
+
+  <!-- EXACT ZARA MOBILE STICKY BOTTOM ACTION BAR (73% Bordered ADD | 27% Price) -->
+  <div class="mobile-sticky-buybar" id="mobile-sticky-buybar" aria-label="Quick purchase bar"></div>
+
+  <!-- SLIDE-OUT DRAWERS (BAG & MEMBER PROFILE — NO WISHLIST DRAWER) -->
+  <div class="drawer-backdrop" id="drawer-backdrop"></div>
+
+  <aside class="side-drawer" id="cart-drawer" aria-label="Shopping bag" aria-hidden="true">
+    <div class="drawer-head">
+      <h2>SHOPPING BAG <span class="drawer-count">[ 0 ]</span></h2>
+      <button class="close-button" id="close-cart-btn" type="button" aria-label="Close bag">×</button>
+    </div>
+    <div class="cart-items" id="cart-items"></div>
+    <div class="cart-total">
+      <span>TOTAL (INR)</span>
+      <span class="subtotal" id="cart-subtotal">₹ 0.00</span>
+    </div>
+    <button class="button" id="open-checkout-btn" type="button" style="width:100%;">
+      CONTINUE TO CHECKOUT <span aria-hidden="true">→</span>
+    </button>
+    <p style="margin:10px 0 0; font-size:9.5px; color:var(--muted); text-align:center; text-transform:uppercase; letter-spacing:0.06em;">
+      MRP INCL. OF ALL TAXES · 1-OF-1 RESERVATION ON CONFIRMATION
+    </p>
+  </aside>
+
+  <aside class="side-drawer" id="profile-drawer" aria-label="Member profile" aria-hidden="true">
+    <div class="drawer-head">
+      <h2>CLUB PROFILE</h2>
+      <button class="close-button" id="close-profile-btn" type="button" aria-label="Close profile">×</button>
+    </div>
+    <p style="padding:18px 0 6px; color:var(--muted); font-size:12px; line-height:1.6; margin:0;">
+      Save your shipping details so checkout is instant when a 1-of-1 hoodie or zipper drop goes live.
+    </p>
+    <form class="form-grid" id="profile-form">
+      <label class="form-label" for="profile-name">Full Name
+        <input class="form-input" id="profile-name" name="name" type="text" placeholder="Aarav Sharma" required>
+      </label>
+      <label class="form-label" for="profile-email">Email Address
+        <input class="form-input" id="profile-email" name="email" type="email" placeholder="aarav@example.com" required>
+      </label>
+      <label class="form-label" for="profile-phone">WhatsApp / Phone Number
+        <input class="form-input" id="profile-phone" name="phone" type="tel" placeholder="+91 98765 43210" required>
+      </label>
+      <button class="button" type="submit" style="width:100%; margin-top:6px;">Save Details</button>
+    </form>
+  </aside>
+
+  <!-- CHECKOUT MODAL -->
+  <div class="modal-overlay" id="checkout-modal" aria-hidden="true">
+    <div class="modal-card" id="checkout-modal-content"></div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    /* ==========================================================================
+       01. PRODUCT CATALOG — EXCLUSIVELY 1-OF-1 HOODIES & ZIPPERS (STRICT ₹ INR)
+       ========================================================================== */
+    const products = {
+      "zara-quarter-zip-sweatshirt": {
+        id: "zara-quarter-zip-sweatshirt",
+        name: "BASIC QUARTER-ZIP SWEATSHIRT",
+        priceInr: 2950,
+        originalPriceInr: 5550,
+        discountLabel: "-46%",
+        sku: "BLACK | 4092/360/800",
+        swatchHex: "#000000",
+        swatches: ["#000000", "#3b3531"],
+        colorCount: "+8",
+        modelHeight: "Model height: 188 cm",
+        category: "zippers",
+        categoryLabel: "Zippers & Quarter-Zips",
+        era: "Archive Studio Drop",
+        unisexSize: "L (Regular Fit)",
+        fitSummary: "Regular fit sweatshirt. High neck with front zip fastening. Long sleeves. Ribbed trims.",
+        conditionScore: "9.8 / 10",
+        patinaSummary: "Deadstock archive condition. Matte black heavy fleece with crisp silver-tone quarter-zip hardware.",
+        flawReport: "Zero flaws, stains, or pulls. Steam-sanitized and ready to wear.",
+        fabric: "85% Cotton, 15% Polyester Heavyweight Brushed Fleece (480gsm)",
+        liveBagCount: 7,
+        isSold: false,
+        measurementsIn: { chest: "23.5\"", length: "27.0\"", shoulder: "21.0\"", sleeve: "24.5\"" },
+        measurementsCm: { chest: "60 cm", length: "68.5 cm", shoulder: "53 cm", sleeve: "62 cm" },
+        images: [
+          { url: "https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?auto=format&fit=crop&w=1200&q=85", label: "01 / STUDIO FULL FIT" },
+          { url: "https://images.unsplash.com/photo-1516826957135-700dedea698c?auto=format&fit=crop&w=1200&q=85", label: "02 / LOWER PROPORTION" },
+          { url: "https://images.unsplash.com/photo-1507680434567-5739c80be1ac?auto=format&fit=crop&w=1200&q=85", label: "03 / SIDE PROFILE FIT" },
+          { url: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=1200&q=85", label: "04 / ZIPPER COLLAR DETAIL" },
+          { url: "https://images.unsplash.com/photo-1578587018452-892bacefd3f2?auto=format&fit=crop&w=1200&q=85", label: "05 / ISOLATED PACKSHOT" }
+        ],
+        description: "Regular fit sweatshirt. High neck with front zip fastening. Long sleeves. Ribbed trims."
+      },
+      "technical-relaxed-fleece-zipper": {
+        id: "technical-relaxed-fleece-zipper",
+        name: "TECHNICAL RELAXED FIT ZIP-UP JACKET",
+        priceInr: 2950,
+        originalPriceInr: 5550,
+        discountLabel: "-46%",
+        sku: "ANTHRACITE | 4092/412/800",
+        swatchHex: "#1c1c1e",
+        swatches: ["#1c1c1e", "#4e4944"],
+        colorCount: "1 OF 1",
+        modelHeight: "Model height: 187 cm",
+        category: "zippers",
+        categoryLabel: "Zippers & Quarter-Zips",
+        era: "Late 90s Archive",
+        unisexSize: "L (Boxy Fit)",
+        fitSummary: "Relaxed boxy crop with full front two-way metal zipper and stand collar.",
+        conditionScore: "9.5 / 10",
+        patinaSummary: "Dense double-knit technical cotton blend with matte charcoal finish and clean seam structure.",
+        flawReport: "Zero holes or stains. YKK two-way zipper glides effortlessly.",
+        fabric: "490gsm Technical Cotton-Nylon Interlock Fleece",
+        liveBagCount: 5,
+        isSold: false,
+        measurementsIn: { chest: "24.0\"", length: "26.5\"", shoulder: "20.5\"", sleeve: "24.5\"" },
+        measurementsCm: { chest: "61 cm", length: "67 cm", shoulder: "52 cm", sleeve: "62 cm" },
+        images: [
+          { url: "https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=1200&q=85", label: "01 / STUDIO FRONT" },
+          { url: "https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=1200&q=85", label: "02 / BACK DRAPE" },
+          { url: "https://images.unsplash.com/photo-1576995853123-5a10305d93c0?auto=format&fit=crop&w=1200&q=85", label: "03 / HARDWARE DETAIL" },
+          { url: "https://images.unsplash.com/photo-1543076447-215ad9ba6923?auto=format&fit=crop&w=1200&q=85", label: "04 / TEXTURE" }
+        ],
+        description: "Relaxed fit full-zip sweatshirt jacket. High collar, long sleeves with ribbed cuffs, side welt pockets, and ribbed hem."
+      },
+      "heavy-blank-reverse-hoodie": {
+        id: "heavy-blank-reverse-hoodie",
+        name: "SUNFADED 480GSM BOXY HOODIE",
+        priceInr: 3450,
+        originalPriceInr: null,
+        discountLabel: null,
+        sku: "WASHED SLATE | 2001/480/809",
+        swatchHex: "#3a3d42",
+        swatches: ["#3a3d42", "#181818"],
+        colorCount: "1 OF 1",
+        modelHeight: "Model height: 188 cm",
+        category: "hoodies",
+        categoryLabel: "Hoodies",
+        era: "2001 Archive",
+        unisexSize: "XL (Boxy Drop)",
+        fitSummary: "Wide chest with snug waist rib and double-layered cord-free hood; fits Unisex L–XL.",
+        conditionScore: "9.4 / 10",
+        patinaSummary: "Side-gusset rib panels prevent vertical shrinkage; double-layer hood stands up on its own.",
+        flawReport: "Drawcord removed for clean minimalist look. Zero stains or cuff fraying.",
+        fabric: "480gsm Cross-Grain 100% Heavy Cotton Fleece",
+        liveBagCount: 6,
+        isSold: false,
+        measurementsIn: { chest: "25.5\"", length: "27.5\"", shoulder: "22.5\"", sleeve: "25.0\"" },
+        measurementsCm: { chest: "65 cm", length: "70 cm", shoulder: "57 cm", sleeve: "63.5 cm" },
+        images: [
+          { url: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=1200&q=85", label: "01 / FRONT VIEW" },
+          { url: "https://images.unsplash.com/photo-1578681994506-b8f463449011?auto=format&fit=crop&w=1200&q=85", label: "02 / HOOD & DRAPE" },
+          { url: "https://images.unsplash.com/photo-1509942774463-acf339cf87d5?auto=format&fit=crop&w=1200&q=85", label: "03 / FLEECE GRAIN" },
+          { url: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1200&q=85", label: "04 / SIDE GUSSET" }
+        ],
+        description: "Boxy fit hoodie made of heavyweight 480gsm spun cotton fleece. Kangaroo pocket and ribbed trims."
+      },
+      "velvet-burgundy-zip-jacket": {
+        id: "velvet-burgundy-zip-jacket",
+        name: "VELVET ZIP-UP ARCHIVE JACKET",
+        priceInr: 3950,
+        originalPriceInr: 7550,
+        discountLabel: "-48%",
+        sku: "BURGUNDY WINE | 4092/755/605",
+        swatchHex: "#4a1c24",
+        swatches: ["#4a1c24", "#141414"],
+        colorCount: "1 OF 1",
+        modelHeight: "Model height: 186 cm",
+        category: "zippers",
+        categoryLabel: "Zippers & Quarter-Zips",
+        era: "Early 2000s Archive",
+        unisexSize: "M (Relaxed)",
+        fitSummary: "Relaxed straight cut with plush velour finish and antique silver zipper.",
+        conditionScore: "9.6 / 10",
+        patinaSummary: "Rich deep burgundy velour pile that catches studio light; crisp turn-down collar.",
+        flawReport: "Zero bald spots or snags. Freshly steam-sanitized.",
+        fabric: "82% Cotton, 18% Velour Plush Weave",
+        liveBagCount: 4,
+        isSold: false,
+        measurementsIn: { chest: "23.0\"", length: "26.0\"", shoulder: "19.5\"", sleeve: "25.0\"" },
+        measurementsCm: { chest: "58.5 cm", length: "66 cm", shoulder: "49.5 cm", sleeve: "63.5 cm" },
+        images: [
+          { url: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=1200&q=85", label: "01 / STUDIO FRONT" },
+          { url: "https://images.unsplash.com/photo-1559551409-dadc959f76b8?auto=format&fit=crop&w=1200&q=85", label: "02 / VELVET PILE" },
+          { url: "https://images.unsplash.com/photo-1548883354-94bcfe321cbb?auto=format&fit=crop&w=1200&q=85", label: "03 / ZIPPER HARDWARE" },
+          { url: "https://images.unsplash.com/photo-1539533018447-63fcce2678e3?auto=format&fit=crop&w=1200&q=85", label: "04 / COLLAR DETAIL" }
+        ],
+        description: "Collared zip-up jacket crafted in heavyweight cotton velour. Front metal zip closure, side welt pockets, and tonal ribbed cuffs."
+      },
+      "acid-wash-full-zip-hoodie": {
+        id: "acid-wash-full-zip-hoodie",
+        name: "ACID-WASH HEAVY FULL-ZIP HOODIE",
+        priceInr: 3250,
+        originalPriceInr: null,
+        discountLabel: null,
+        sku: "CHARCOAL WASH | 1999/510/802",
+        swatchHex: "#2b2b2b",
+        swatches: ["#2b2b2b", "#595959"],
+        colorCount: "1 OF 1",
+        modelHeight: "Model height: 188 cm",
+        category: "zippers",
+        categoryLabel: "Zippers & Quarter-Zips",
+        era: "1999 Archive",
+        unisexSize: "L (Oversized)",
+        fitSummary: "Dropped-shoulder oversized full-zip hoodie with vintage brass zipper and split kangaroo pocket.",
+        conditionScore: "9.3 / 10",
+        patinaSummary: "High-contrast enzyme wash along the seams and hood edge; heavy waffle-lined hood.",
+        flawReport: "Natural distressing on pocket edges from authentic wear. Zipper teeth 100% intact.",
+        fabric: "510gsm Heavyweight Enzyme-Washed Cotton Terry",
+        liveBagCount: 8,
+        isSold: false,
+        measurementsIn: { chest: "25.0\"", length: "27.0\"", shoulder: "22.0\"", sleeve: "24.5\"" },
+        measurementsCm: { chest: "63.5 cm", length: "68.5 cm", shoulder: "56 cm", sleeve: "62 cm" },
+        images: [
+          { url: "https://images.unsplash.com/photo-1509942774463-acf339cf87d5?auto=format&fit=crop&w=1200&q=85", label: "01 / FRONT VIEW" },
+          { url: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=1200&q=85", label: "02 / BACK DRAPE" },
+          { url: "https://images.unsplash.com/photo-1578681994506-b8f463449011?auto=format&fit=crop&w=1200&q=85", label: "03 / SEAM PATINA" },
+          { url: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1200&q=85", label: "04 / WAFFLE HOOD" }
+        ],
+        description: "Oversized fit hoodie with full front metal zipper. Acid-washed 510gsm French terry with high-low seam fades."
+      },
+      "ecru-funnel-neck-quarter-zip": {
+        id: "ecru-funnel-neck-quarter-zip",
+        name: "RIBBED FUNNEL-NECK QUARTER-ZIP",
+        priceInr: 2650,
+        originalPriceInr: 4350,
+        discountLabel: "-39%",
+        sku: "ECRU MARL | 4092/361/712",
+        swatchHex: "#dcd7cc",
+        swatches: ["#dcd7cc", "#222222"],
+        colorCount: "1 OF 1",
+        modelHeight: "Model height: 185 cm",
+        category: "zippers",
+        categoryLabel: "Zippers & Quarter-Zips",
+        era: "2003 Archive",
+        unisexSize: "M (Boxy)",
+        fitSummary: "Clean boxy drape in warm unbleached ecru cotton with contrast silver quarter-zip.",
+        conditionScore: "9.6 / 10",
+        patinaSummary: "Soft organic oatmeal marl knit with thick double-ribbed funnel collar.",
+        flawReport: "Zero marks or discoloration on collar or cuffs.",
+        fabric: "420gsm Organic Combed Cotton Fleece",
+        liveBagCount: 3,
+        isSold: false,
+        measurementsIn: { chest: "23.0\"", length: "26.0\"", shoulder: "20.0\"", sleeve: "24.0\"" },
+        measurementsCm: { chest: "58.5 cm", length: "66 cm", shoulder: "51 cm", sleeve: "61 cm" },
+        images: [
+          { url: "https://images.unsplash.com/photo-1578587018452-892bacefd3f2?auto=format&fit=crop&w=1200&q=85", label: "01 / STUDIO PACKSHOT" },
+          { url: "https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?auto=format&fit=crop&w=1200&q=85", label: "02 / ON-BODY FIT" },
+          { url: "https://images.unsplash.com/photo-1507680434567-5739c80be1ac?auto=format&fit=crop&w=1200&q=85", label: "03 / SIDE PROFILE" },
+          { url: "https://images.unsplash.com/photo-1516826957135-700dedea698c?auto=format&fit=crop&w=1200&q=85", label: "04 / CUFF TRIM" }
+        ],
+        description: "Relaxed fit ecru quarter-zip sweatshirt. High ribbed funnel neck with metal zip pull and dropped shoulders."
+      },
+      "double-hood-520gsm-pullover": {
+        id: "double-hood-520gsm-pullover",
+        name: "DOUBLE-HOOD 520GSM ARCHIVE PULLOVER",
+        priceInr: 3850,
+        originalPriceInr: null,
+        discountLabel: null,
+        sku: "JET BLACK | 2002/520/800",
+        swatchHex: "#0f0f0f",
+        swatches: ["#0f0f0f", "#383838"],
+        colorCount: "1 OF 1",
+        modelHeight: "Model height: 188 cm",
+        category: "hoodies",
+        categoryLabel: "Hoodies",
+        era: "2002 Archive",
+        unisexSize: "L (Boxy Crop)",
+        fitSummary: "Ultra-structured 520gsm heavyweight pullover hoodie with cropped waist rib and wide sleeves.",
+        conditionScore: "9.7 / 10",
+        patinaSummary: "Matte jet-black heavyweight jersey exterior with brushed thermal interior.",
+        flawReport: "Flawless archive condition. Holds architectural shape on body.",
+        fabric: "520gsm Double-Faced Heavyweight Cotton Fleece",
+        liveBagCount: 9,
+        isSold: false,
+        measurementsIn: { chest: "25.0\"", length: "26.5\"", shoulder: "22.5\"", sleeve: "24.5\"" },
+        measurementsCm: { chest: "63.5 cm", length: "67 cm", shoulder: "57 cm", sleeve: "62 cm" },
+        images: [
+          { url: "https://images.unsplash.com/photo-1578681994506-b8f463449011?auto=format&fit=crop&w=1200&q=85", label: "01 / STUDIO FRONT" },
+          { url: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=1200&q=85", label: "02 / HOOD STRUCTURE" },
+          { url: "https://images.unsplash.com/photo-1509942774463-acf339cf87d5?auto=format&fit=crop&w=1200&q=85", label: "03 / SLEEVE STACK" },
+          { url: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1200&q=85", label: "04 / HEM RIB" }
+        ],
+        description: "Architectural 520gsm heavyweight pullover hoodie. Double-layered hood with crossover neck, kangaroo pocket, and snug ribbed hem."
+      },
+      "vintage-distressed-work-zip-hoodie": {
+        id: "vintage-distressed-work-zip-hoodie",
+        name: "1997 DISTRESSED CANVAS ZIP HOODIE",
+        priceInr: 2450,
+        originalPriceInr: 4950,
+        discountLabel: "-50%",
+        sku: "FADED EARTH | 1997/112/804",
+        swatchHex: "#4a4036",
+        swatches: ["#4a4036", "#1e1e1e"],
+        colorCount: "1 OF 1",
+        modelHeight: "Model height: 186 cm",
+        category: "hoodies",
+        categoryLabel: "Hoodies",
+        era: "1997 Archive",
+        unisexSize: "L (Boxy)",
+        fitSummary: "Boxy workwear hooded sweatshirt with thermal waffle lining and brass zipper.",
+        conditionScore: "9.1 / 10",
+        patinaSummary: "Sun-bleached espresso brown fade along shoulders and hood.",
+        flawReport: "Zero holes or stains. Sold as a 1-of-1 archive piece—never restocks.",
+        fabric: "500gsm Thermal-Lined Heavy Cotton Fleece",
+        liveBagCount: 0,
+        isSold: true,
+        measurementsIn: { chest: "24.0\"", length: "26.5\"", shoulder: "21.0\"", sleeve: "24.0\"" },
+        measurementsCm: { chest: "61 cm", length: "67 cm", shoulder: "53 cm", sleeve: "61 cm" },
+        images: [
+          { url: "https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=1200&q=85", label: "01 / FRONT VIEW" },
+          { url: "https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=1200&q=85", label: "02 / BACK VIEW" },
+          { url: "https://images.unsplash.com/photo-1576995853123-5a10305d93c0?auto=format&fit=crop&w=1200&q=85", label: "03 / POCKET" },
+          { url: "https://images.unsplash.com/photo-1543076447-215ad9ba6923?auto=format&fit=crop&w=1200&q=85", label: "04 / COLLAR" }
+        ],
+        description: "Heavyweight 1997 thermal-lined zip hoodie. Somebody beat you to this one—once a piece sells at OOPS! CLUB™, it is gone forever."
+      }
+    };
+
+    /* ==========================================================================
+       02. STATE & STRICT ₹ INR FORMATTING
+       ========================================================================== */
+    let bag = [];
+    let activeFilter = "all"; // 'all' | 'hoodies' | 'zippers'
+    let plpAvailableOnly = false;
+    let plpSortBy = "featured"; // 'featured' | 'price-asc' | 'price-desc'
+    let plpZoomMode = 2; // 2 = 2-Column Symmetric (Screenshot 76) | 1 = Zoom-1 Editorial Asymmetric (Screenshot 78)
+    let plpSearchOpen = false;
+    let plpFilterDrawerOpen = false;
+    let gridDensity = 4; // Homepage grid density
+    let measureUnit = "IN";
+    let activePdpTab = "description";
+    let pdpTheme = "light"; // 'light' = Exact Zara White/Black Editorial | 'dark' = OOPS! Dark Archive
+    let pdpForceMobile = false;
+    let appBannerDismissed = false;
+    let simulateAllSoldOut = false;
+    let toastTimer;
+    let inlineAddObserver = null;
+
+    const productGridEl = document.querySelector("#product-grid");
+    const emptyStateEl = document.querySelector("#empty-state");
+    const plpPageEl = document.querySelector("#plp-page");
+    const productPageEl = document.querySelector("#product-page");
+    const mobileBuybarEl = document.querySelector("#mobile-sticky-buybar");
+    const productSearchEl = document.querySelector("#product-search");
+    const bagCountEl = document.querySelector(".bag-count");
+    const cartDrawerEl = document.querySelector("#cart-drawer");
+    const profileDrawerEl = document.querySelector("#profile-drawer");
+    const backdropEl = document.querySelector("#drawer-backdrop");
+    const cartItemsEl = document.querySelector("#cart-items");
+    const checkoutModalEl = document.querySelector("#checkout-modal");
+    const checkoutModalContentEl = document.querySelector("#checkout-modal-content");
+    const toastEl = document.querySelector("#toast");
+    const homeSections = document.querySelectorAll("#hero-section, #showcase-section, #shop, #story, #newsletter");
+
+    try {
+      const savedSoldIds = JSON.parse(localStorage.getItem("oops-club-sold-ids") || "[]");
+      if (Array.isArray(savedSoldIds)) {
+        savedSoldIds.forEach((id) => { if (products[id]) products[id].isSold = true; });
+      }
+    } catch (e) {}
+
+    function isItemSold(product) { return simulateAllSoldOut || product.isSold; }
+
+    function formatInr(amount) {
+      return "₹ " + Number(amount).toLocaleString("en-IN", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      });
+    }
+
+    function formatTotalInr(itemIds) {
+      const sum = itemIds.reduce((acc, id) => acc + (products[id] ? products[id].priceInr : 0), 0);
+      return formatInr(sum);
+    }
+
+    function showToast(message) {
+      toastEl.textContent = message;
+      toastEl.classList.remove("show");
+      void toastEl.offsetWidth;
+      toastEl.classList.add("show");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toastEl.classList.remove("show"), 2600);
+    }
+
+    /* ==========================================================================
+       03. ZARA PRODUCT CARD BUILDER & HOMEPAGE / PLP RENDERERS
+       ========================================================================== */
+    function getFilteredProducts() {
+      const query = productSearchEl.value.trim().toLowerCase();
+      const allItems = Object.values(products);
+      let visibleItems = allItems.filter((item) => {
+        const sold = isItemSold(item);
+        const matchesCategory = activeFilter === "all" || item.category === activeFilter;
+        const matchesAvail = !plpAvailableOnly || !sold;
+        const searchCorpus = `${item.name} ${item.unisexSize} ${item.era} ${item.categoryLabel} ${item.sku}`.toLowerCase();
+        const matchesSearch = !query || searchCorpus.includes(query);
+        return matchesCategory && matchesAvail && matchesSearch;
+      });
+
+      if (plpSortBy === "price-asc") {
+        visibleItems.sort((a, b) => a.priceInr - b.priceInr);
+      } else if (plpSortBy === "price-desc") {
+        visibleItems.sort((a, b) => b.priceInr - a.priceInr);
+      }
+      return visibleItems;
+    }
+
+    function buildZaraCardHtml(item, showOrigins = true, badgeTextColor = "#000000") {
+      const sold = isItemSold(item);
+      const frontImg = item.images[0].url;
+      const backImg = item.images[1] ? item.images[1].url : frontImg;
+      const swatchesHtml = (item.swatches || [item.swatchHex || "#000000"]).map(
+        (hex) => `<span class="zara-swatch-dot" style="background:${hex};"></span>`
+      ).join("");
+
+      return `
+        <article class="zara-card ${sold ? "is-sold" : ""}" role="link" tabindex="0" data-card-id="${item.id}" aria-label="${item.name}">
+          <div class="zara-card-media">
+            <img class="img-front" src="${frontImg}" alt="${item.name}" loading="lazy">
+            <img class="img-back" src="${backImg}" alt="${item.name} alternate view" loading="lazy">
+            ${
+              sold
+                ? `<div class="sold-overlay-stamp"><span>OOPS, IT IS GONE.</span></div>`
+                : ""
+            }
+          </div>
+
+          <div class="zara-card-info">
+            ${showOrigins ? `<span class="zara-card-origins">ORIGINS</span>` : ""}
+            <div class="zara-card-row-1">
+              <h3 class="zara-card-title">${item.name}</h3>
+              ${
+                sold
+                  ? `<span style="font-size:9px; opacity:0.6; letter-spacing:0.06em;">SOLD</span>`
+                  : `<button class="zara-card-plus-btn" type="button" data-add-bag="${item.id}" title="Quick add to bag" aria-label="Add ${item.name} to bag">+</button>`
+              }
+            </div>
+
+            <div class="zara-card-price-wrap">
+              ${
+                item.originalPriceInr && !sold
+                  ? `
+                    <span class="zara-price-old">${formatInr(item.originalPriceInr)}</span>
+                    <div class="zara-price-discount-badge">
+                      <span style="color:${badgeTextColor};">${item.discountLabel || "-45%"}</span>
+                      <span style="color:${badgeTextColor};">${formatInr(item.priceInr)}</span>
+                    </div>
+                  `
+                  : `<span class="zara-price-regular" style="${sold ? "text-decoration:line-through; opacity:0.6;" : ""}">${formatInr(item.priceInr)}</span>`
+              }
+            </div>
+
+            <div class="zara-card-swatches">
+              ${swatchesHtml}
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    function renderProductGrid() {
+      const visibleItems = getFilteredProducts();
+
+      const activeCountLabel = document.querySelector("#active-count-label");
+      if (activeCountLabel) activeCountLabel.textContent = `[${visibleItems.length}]`;
+
+      productGridEl.classList.toggle("grid-density-2", gridDensity === 2);
+      productGridEl.innerHTML = visibleItems.map((item) => buildZaraCardHtml(item, true, "#000000")).join("");
+      emptyStateEl.style.display = visibleItems.length ? "none" : "block";
+    }
+
+    /* ==========================================================================
+       03B. DEDICATED ZARA PRODUCT LISTING PAGE (PLP) RENDERER (SCREENSHOTS 76 & 78)
+       ========================================================================== */
+    function renderPlpPage() {
+      const visibleItems = getFilteredProducts();
+      const query = productSearchEl.value.trim();
+      const badgeTextCol = pdpTheme === "light" ? "#ffffff" : "#000000";
+
+      plpPageEl.innerHTML = `
+        <!-- Top Control Bar for Switching Zara Light / OOPS! Dark or Back to Home -->
+        <div class="pdp-control-bar">
+          <div class="wrap pdp-control-inner">
+            <button type="button" class="pdp-back-btn" id="plp-back-home-btn">
+              ← Back to Homepage
+            </button>
+            <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+              <button type="button" class="sim-toggle-btn ${pdpTheme === "light" ? "active" : ""}" id="plp-toggle-theme">
+                Theme: ${pdpTheme === "light" ? "Zara Light" : "OOPS! Dark"}
+              </button>
+              <button type="button" class="sim-toggle-btn ${plpZoomMode === 1 ? "active" : ""}" id="plp-toggle-zoom-top">
+                Grid: ${plpZoomMode === 1 ? "Zoom 1 Editorial (Screenshot 78)" : "2-Column Catalog (Screenshot 76)"}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- EXACT ZARA PLP STICKY HEADER (MATCHING SCREENSHOT 76 & 78) -->
+        <div class="zara-plp-sticky-header">
+          <!-- Row 1: [ = ] on Left | [ ▢ / ▯▯ ]  FILTERS  Q  [ 0 ] on Right -->
+          <div class="zara-plp-top-row">
+            <div class="zara-plp-left">
+              <button type="button" class="zara-menu-lines" id="plp-menu-home" aria-label="Return home" style="color:var(--pdp-ink);">
+                <span></span>
+                <span></span>
+              </button>
+            </div>
+
+            <div class="zara-plp-right">
+              <!-- Zoom Toggle Button: Single Square [ ▢ ] (Screenshot 78) vs Double Vertical [ ▯▯ ] (Screenshot 76) -->
+              <button type="button" class="zara-zoom-toggle-btn" id="plp-zoom-btn" title="Switch Grid Zoom" aria-label="Switch grid layout">
+                ${
+                  plpZoomMode === 1
+                    ? `<span class="box-single"></span>`
+                    : `<span class="box-double"></span><span class="box-double"></span>`
+                }
+              </button>
+
+              <button type="button" class="zara-plp-text-btn" id="plp-filters-btn" style="${plpFilterDrawerOpen || plpAvailableOnly || plpSortBy !== "featured" ? "font-weight:700;" : ""}">
+                FILTERS
+              </button>
+
+              <button type="button" class="zara-plp-text-btn" id="plp-search-toggle-btn" aria-label="Search catalog">
+                <svg width="14" height="14" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.2">
+                  <circle cx="6.5" cy="6.5" r="5.2" />
+                  <line x1="10.5" y1="10.5" x2="14" y2="14" />
+                </svg>
+              </button>
+
+              <button type="button" class="zara-bracket-bag-btn" id="plp-bag-btn" aria-label="Open bag" style="color:var(--pdp-ink);">
+                <div class="zara-bag-bracket">
+                  <span>${bag.length}</span>
+                </div>
+              </button>
+            </div>
+          </div>
+
+          <!-- Row 2: Category Tabs (VIEW ALL   HOODIES   ZIPPERS — Exact Screenshot 78 Match) -->
+          <div class="zara-plp-cat-row">
+            <div class="zara-plp-tabs no-scrollbar" role="tablist">
+              <button type="button" class="zara-plp-tab ${activeFilter === "all" ? "active" : ""}" data-plp-cat="all">VIEW ALL</button>
+              <button type="button" class="zara-plp-tab ${activeFilter === "hoodies" ? "active" : ""}" data-plp-cat="hoodies">HOODIES</button>
+              <button type="button" class="zara-plp-tab ${activeFilter === "zippers" ? "active" : ""}" data-plp-cat="zippers">ZIPPERS</button>
+            </div>
+            ${
+              query
+                ? `<div style="font-size:10px; letter-spacing:0.06em; text-transform:uppercase; color:var(--pdp-muted);">
+                     SEARCH: <strong style="color:var(--pdp-ink);">"${query}"</strong> (${visibleItems.length})
+                     <button type="button" id="plp-clear-search" style="margin-left:6px; border:0; background:transparent; text-decoration:underline; cursor:pointer; color:var(--pdp-ink);">CLEAR</button>
+                   </div>`
+                : ""
+            }
+          </div>
+
+          <!-- Live Search Input Row inside PLP (Opens automatically when user searches or taps Q) -->
+          ${
+            plpSearchOpen || query
+              ? `
+                <div class="zara-plp-search-bar">
+                  <input type="search" id="plp-live-search-input" value="${query.replace(/"/g, "&quot;")}" placeholder="SEARCH HOODIES, QUARTER-ZIPS, 480GSM..." autocomplete="off">
+                  <button type="button" class="zara-plp-text-btn" id="plp-close-search-btn" style="font-size:10px; color:var(--pdp-muted);">CLOSE</button>
+                </div>
+              `
+              : ""
+          }
+
+          <!-- Collapsible FILTERS Panel -->
+          ${
+            plpFilterDrawerOpen
+              ? `
+                <div class="zara-plp-filter-panel">
+                  <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+                    <span style="color:var(--pdp-muted);">AVAILABILITY:</span>
+                    <button type="button" class="zara-filter-chip ${!plpAvailableOnly ? "active" : ""}" data-plp-avail="all">ALL PIECES</button>
+                    <button type="button" class="zara-filter-chip ${plpAvailableOnly ? "active" : ""}" data-plp-avail="available">AVAILABLE 1-OF-1 ONLY</button>
+                  </div>
+                  <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+                    <span style="color:var(--pdp-muted);">SORT BY:</span>
+                    <button type="button" class="zara-filter-chip ${plpSortBy === "featured" ? "active" : ""}" data-plp-sort="featured">FEATURED</button>
+                    <button type="button" class="zara-filter-chip ${plpSortBy === "price-asc" ? "active" : ""}" data-plp-sort="price-asc">PRICE: LOW TO HIGH</button>
+                    <button type="button" class="zara-filter-chip ${plpSortBy === "price-desc" ? "active" : ""}" data-plp-sort="price-desc">PRICE: HIGH TO LOW</button>
+                  </div>
+                </div>
+              `
+              : ""
+          }
+        </div>
+
+        <!-- PLP PRODUCT CARDS GRID -->
+        <div class="plp-grid-wrap">
+          ${
+            visibleItems.length
+              ? `
+                <div class="product-grid ${plpZoomMode === 1 ? "plp-zoom-1" : "grid-density-2"}">
+                  ${visibleItems.map((item) => buildZaraCardHtml(item, true, badgeTextCol)).join("")}
+                </div>
+              `
+              : `
+                <div style="padding:64px 16px; text-align:center;">
+                  <p style="font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:var(--pdp-muted); margin-bottom:14px;">
+                    NO HOODIES OR ZIPPERS MATCH YOUR SEARCH "${query.toUpperCase()}".
+                  </p>
+                  <button type="button" id="plp-reset-all-btn" style="padding:8px 18px; border:1px solid var(--pdp-border-strong); background:transparent; color:var(--pdp-ink); font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase; cursor:pointer;">
+                    RESET FILTERS &amp; VIEW ALL
+                  </button>
+                </div>
+              `
+          }
+        </div>
+      `;
+
+      setupPlpInteractions();
+    }
+
+    function setupPlpInteractions() {
+      const backHome = document.querySelector("#plp-back-home-btn");
+      if (backHome) backHome.addEventListener("click", () => { location.hash = "#top"; });
+
+      const menuHome = document.querySelector("#plp-menu-home");
+      if (menuHome) menuHome.addEventListener("click", () => { location.hash = "#top"; });
+
+      const bagBtn = document.querySelector("#plp-bag-btn");
+      if (bagBtn) bagBtn.addEventListener("click", () => setCartDrawer(true));
+
+      const themeBtn = document.querySelector("#plp-toggle-theme");
+      if (themeBtn) {
+        themeBtn.addEventListener("click", () => {
+          pdpTheme = pdpTheme === "light" ? "dark" : "light";
+          document.body.classList.toggle("pdp-theme-light", pdpTheme === "light");
+          renderPlpPage();
+        });
+      }
+
+      const toggleZoom = () => {
+        plpZoomMode = plpZoomMode === 2 ? 1 : 2;
+        renderPlpPage();
+      };
+      const zoomBtn = document.querySelector("#plp-zoom-btn");
+      if (zoomBtn) zoomBtn.addEventListener("click", toggleZoom);
+      const zoomTopBtn = document.querySelector("#plp-toggle-zoom-top");
+      if (zoomTopBtn) zoomTopBtn.addEventListener("click", toggleZoom);
+
+      const filtersBtn = document.querySelector("#plp-filters-btn");
+      if (filtersBtn) {
+        filtersBtn.addEventListener("click", () => {
+          plpFilterDrawerOpen = !plpFilterDrawerOpen;
+          renderPlpPage();
+        });
+      }
+
+      const searchToggleBtn = document.querySelector("#plp-search-toggle-btn");
+      if (searchToggleBtn) {
+        searchToggleBtn.addEventListener("click", () => {
+          plpSearchOpen = !plpSearchOpen;
+          renderPlpPage();
+          const input = document.querySelector("#plp-live-search-input");
+          if (input) input.focus();
+        });
+      }
+
+      const closeSearchBtn = document.querySelector("#plp-close-search-btn");
+      if (closeSearchBtn) {
+        closeSearchBtn.addEventListener("click", () => {
+          plpSearchOpen = false;
+          productSearchEl.value = "";
+          renderProductGrid();
+          renderPlpPage();
+        });
+      }
+
+      const clearSearchBtn = document.querySelector("#plp-clear-search");
+      if (clearSearchBtn) {
+        clearSearchBtn.addEventListener("click", () => {
+          productSearchEl.value = "";
+          renderProductGrid();
+          renderPlpPage();
+        });
+      }
+
+      const resetAllBtn = document.querySelector("#plp-reset-all-btn");
+      if (resetAllBtn) {
+        resetAllBtn.addEventListener("click", () => {
+          productSearchEl.value = "";
+          activeFilter = "all";
+          plpAvailableOnly = false;
+          plpSortBy = "featured";
+          renderProductGrid();
+          renderPlpPage();
+        });
+      }
+
+      const liveSearchInput = document.querySelector("#plp-live-search-input");
+      if (liveSearchInput) {
+        liveSearchInput.addEventListener("input", (e) => {
+          productSearchEl.value = e.target.value;
+          const cursorPos = e.target.selectionStart;
+          renderProductGrid();
+          renderPlpPage();
+          const nextInput = document.querySelector("#plp-live-search-input");
+          if (nextInput) {
+            nextInput.focus();
+            try { nextInput.setSelectionRange(cursorPos, cursorPos); } catch (err) {}
+          }
+        });
+      }
+
+      document.querySelectorAll("[data-plp-cat]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          activeFilter = btn.dataset.plpCat;
+          syncHomeFilterButtons();
+          renderProductGrid();
+          renderPlpPage();
+        });
+      });
+
+      document.querySelectorAll("[data-plp-avail]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          plpAvailableOnly = btn.dataset.plpAvail === "available";
+          renderProductGrid();
+          renderPlpPage();
+        });
+      });
+
+      document.querySelectorAll("[data-plp-sort]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          plpSortBy = btn.dataset.plpSort;
+          renderProductGrid();
+          renderPlpPage();
+        });
+      });
+    }
+
+    /* ==========================================================================
+       04. ROUTE CONTROLLER & RESPONSIVE ZARA PDP RENDER (3-COL DESKTOP + MOBILE)
+       ========================================================================== */
+    function renderRoute() {
+      const hash = location.hash;
+      const isPdp = hash.startsWith("#product/");
+      const isPlp = hash.startsWith("#plp");
+      const productId = isPdp ? decodeURIComponent(hash.slice("#product/".length)) : null;
+      const product = productId ? products[productId] : null;
+
+      const showingPdp = Boolean(product);
+      const showingPlp = !showingPdp && isPlp;
+
+      homeSections.forEach((sec) => { sec.hidden = showingPdp || showingPlp; });
+      plpPageEl.hidden = !showingPlp;
+      productPageEl.hidden = !showingPdp;
+      document.body.classList.toggle("is-pdp-open", showingPdp);
+      document.body.classList.toggle("pdp-theme-light", pdpTheme === "light");
+      document.body.classList.toggle("pdp-force-mobile", pdpForceMobile);
+
+      if (showingPlp) {
+        mobileBuybarEl.innerHTML = "";
+        mobileBuybarEl.classList.remove("is-visible");
+        renderPlpPage();
+        return;
+      }
+
+      renderProductPage(product, showingPdp);
+    }
+
+    function renderProductPage(product, showingPdp) {
+      if (inlineAddObserver) {
+        inlineAddObserver.disconnect();
+        inlineAddObserver = null;
+      }
+
+      if (!showingPdp || !product) {
+        mobileBuybarEl.innerHTML = "";
+        mobileBuybarEl.classList.remove("is-visible");
+        return;
+      }
+
+      const sold = isItemSold(product);
+      const specs = measureUnit === "IN" ? product.measurementsIn : product.measurementsCm;
+      const allOthers = Object.values(products).filter((p) => p.id !== product.id);
+      const completeLookItems = allOthers.slice(0, 3);
+      const similarGridItems = Object.values(products).slice(0, 6);
+
+      const heroImage = product.images[0];
+      const remainingImages = product.images.slice(1);
+
+      productPageEl.innerHTML = `
+        <!-- OOPS! CLUB™ PDP CONTROL BAR (Back to PLP + Responsive Desktop/Mobile & Theme Switcher) -->
+        <div class="pdp-control-bar">
+          <div class="wrap pdp-control-inner">
+            <button type="button" class="pdp-back-btn" id="pdp-back-btn">
+              ← Back to Hoodies &amp; Zippers
+            </button>
+
+            <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+              <button type="button" class="sim-toggle-btn ${pdpTheme === "light" ? "active" : ""}" id="toggle-pdp-theme">
+                Theme: ${pdpTheme === "light" ? "Zara Light" : "OOPS! Dark"}
+              </button>
+              <button type="button" class="sim-toggle-btn ${pdpForceMobile ? "active" : ""}" id="toggle-pdp-viewport">
+                Layout: ${pdpForceMobile ? "425px Mobile Frame" : "PC 2-Col (Images Left / Text Right)"}
+              </button>
+              <button type="button" class="sim-toggle-btn ${product.isSold ? "active" : ""}" data-toggle-single-sold="${product.id}">
+                ${product.isSold ? "↺ Restore Available" : "⚡ Test Sold Out"}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- =================================================================== -->
+        <!-- A. DESKTOP / PC 2-COLUMN ZARA PDP (>= 1024px)                       -->
+        <!--    LEFT COLUMN: ALL High-Res 4:5 Product Images + Index Thumbnails  -->
+        <!--    RIGHT COLUMN: Sticky Panel with ALL Text, Price, Buttons, Tabs,  -->
+        <!--                  Flat-Lay Measurements & '+' Accordions             -->
+        <!-- =================================================================== -->
+        <div class="zara-pdp-subheader">
+          <button type="button" class="sub-back-shop" aria-label="Back to archive" style="background:transparent; border:0; padding:6px 0; cursor:pointer; display:flex; align-items:center; gap:10px; color:var(--pdp-ink); font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase;">
+            <span style="display:flex; flex-direction:column; gap:5px;">
+              <span style="display:block; width:16px; height:1px; background:var(--pdp-ink);"></span>
+              <span style="display:block; width:16px; height:1px; background:var(--pdp-ink);"></span>
+            </span>
+            <span>OOPS! CLUB™ ARCHIVE / ${product.categoryLabel} / ${product.name}</span>
+          </button>
+
+          <div style="display:flex; align-items:center; gap:20px;">
+            <button type="button" class="sub-focus-search" aria-label="Search pieces" style="background:transparent; border:0; padding:4px; cursor:pointer; color:var(--pdp-ink); display:flex; align-items:center; gap:6px; font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase;">
+              <span>SEARCH</span>
+              <svg width="13" height="13" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.1">
+                <circle cx="6.5" cy="6.5" r="5.2" />
+                <line x1="10.5" y1="10.5" x2="14" y2="14" />
+              </svg>
+            </button>
+
+            <button type="button" class="sub-open-bag" aria-label="Open bag" style="background:transparent; border:0; padding:4px 0 4px 4px; cursor:pointer; color:var(--pdp-ink);">
+              <div class="zara-bag-bracket">
+                <span>${bag.length}</span>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <div class="zara-pdp-desktop-container">
+          <!-- LEFT COLUMN (~62%): Sticky Index Thumbnails + Full Vertical Stack of 4:5 Editorial Product Images -->
+          <div class="zara-desktop-left-media">
+            <div class="zara-desktop-thumb-rail" aria-label="Image index">
+              ${product.images.map((img, idx) => `
+                <button type="button" class="zara-thumb-btn ${idx === 0 ? "active" : ""}" data-scroll-shot="desktop-shot-${idx}" aria-label="Jump to ${img.label}">
+                  <img src="${img.url}" alt="${img.label}">
+                  <span class="zara-thumb-index">0${idx + 1}</span>
+                </button>
+              `).join("")}
+            </div>
+
+            <div class="zara-desktop-gallery">
+              ${product.images.map((img, idx) => `
+                <div class="zara-desktop-shot" id="desktop-shot-${idx}">
+                  <img src="${img.url}" alt="${product.name} ${img.label}" style="${sold ? "filter:grayscale(1); opacity:0.55;" : ""}">
+                  <span class="zara-shot-badge">${img.label}</span>
+                  ${sold && idx === 0 ? `<div class="sold-overlay-stamp"><span>OOPS, IT IS GONE. · NO RESTOCK</span></div>` : ""}
+                </div>
+              `).join("")}
+            </div>
+          </div>
+
+          <!-- RIGHT COLUMN (~38% Sticky): ALL Product Text, Pricing, Buttons, Tabs, Measurements & Accordions -->
+          <div class="zara-desktop-buy-col">
+            <!-- Category & 1-of-1 Reference Header -->
+            <div class="zara-right-kicker">
+              <span>OOPS! CLUB™ ARCHIVE // 1 OF 1</span>
+              <span>${product.era}</span>
+            </div>
+
+            <!-- Product Title + Swatch Indicator (+8 ■) -->
+            <div class="zara-title-row">
+              <h1 class="zara-pdp-title">${product.name}</h1>
+              <button type="button" class="zara-swatch-trigger" data-switch-tab="description" title="1-of-1 Archive Colour">
+                <span>${product.colorCount || "+8"}</span>
+                <span class="zara-swatch-square" style="background:${product.swatchHex || "#000000"};"></span>
+              </button>
+            </div>
+
+            <!-- Price in INR + Discount Badge + Tax Note -->
+            <div class="zara-pdp-price-row">
+              ${
+                product.originalPriceInr && !sold
+                  ? `
+                    <span style="text-decoration:line-through; color:var(--pdp-muted); font-size:12px;">${formatInr(product.originalPriceInr)}</span>
+                    <span style="padding:2px 7px; background:var(--pdp-ink); color:var(--pdp-bg); font-size:12px; font-weight:700;">
+                      ${product.discountLabel} ${formatInr(product.priceInr)}
+                    </span>
+                  `
+                  : `<span class="zara-pdp-price" style="${sold ? "text-decoration:line-through; opacity:0.6;" : ""}">${formatInr(product.priceInr)}</span>`
+              }
+            </div>
+            <div class="zara-pdp-tax">
+              ${sold ? "SOLD OUT — 1 OF 1 ARCHIVED" : "MRP INCL. OF ALL TAXES"}
+            </div>
+
+            <!-- 1-of-1 Tagged Size & Flat Pit-to-Pit Summary -->
+            <div class="zara-size-box">
+              <div style="display:flex; justify-content:space-between; font-size:9.5px; color:var(--pdp-muted); letter-spacing:0.06em; text-transform:uppercase; margin-bottom:6px;">
+                <span>ARCHIVE SIZE (1 PIECE ONLY)</span>
+                <span>CHEST: ${specs.chest} · LENGTH: ${specs.length}</span>
+              </div>
+              <div class="zara-size-option">
+                <span><strong>${product.unisexSize}</strong></span>
+                <span style="font-size:9.5px; color:var(--pdp-muted);">${sold ? "GONE" : "AVAILABLE · 1 OF 1"}</span>
+              </div>
+            </div>
+
+            <!-- Full-Width Bordered ADD Button + Instant Buy Button -->
+            ${
+              sold
+                ? `<button type="button" class="zara-rect-add-btn" disabled>OOPS, IT IS GONE.</button>`
+                : `
+                  <button type="button" class="zara-rect-add-btn" data-add-bag="${product.id}">ADD</button>
+                  <button type="button" class="zara-rect-instant-btn" data-instant-buy="${product.id}">⚡ INSTANT BUY NOW — LOCK 1-OF-1 PIECE</button>
+                `
+            }
+
+            <!-- Interactive Horizontal Tab Strip inside Right Sticky Panel -->
+            <div class="zara-tabs-section">
+              <div class="zara-tab-strip no-scrollbar" role="tablist">
+                <button type="button" class="zara-tab-btn ${activePdpTab === "description" ? "active" : ""}" data-switch-tab="description">DESCRIPTION</button>
+                <button type="button" class="zara-tab-btn ${activePdpTab === "composition" ? "active" : ""}" data-switch-tab="composition">COMPOSITION</button>
+                <button type="button" class="zara-tab-btn ${activePdpTab === "measurements" ? "active" : ""}" data-switch-tab="measurements">MEASUREMENTS</button>
+                <button type="button" class="zara-tab-btn ${activePdpTab === "grade" ? "active" : ""}" data-switch-tab="grade">THRIFT GRADE</button>
+              </div>
+              <div class="zara-tab-panel">
+                ${renderZaraTabContent(product, specs)}
+              </div>
+            </div>
+
+            <!-- Color / Archive Code Strip (BLACK | 4092/360/800 · 1-OF-1 ARCHIVE PIECE) -->
+            <div class="zara-archive-code-strip">
+              <div style="display:flex; align-items:center; gap:8px;">
+                <span class="zara-swatch-square" style="background:${product.swatchHex || "#000000"};"></span>
+                <span><strong>${product.sku || "BLACK | 4092/360/800"}</strong></span>
+              </div>
+              <span style="color:var(--pdp-muted);">1-OF-1 ARCHIVE PIECE</span>
+            </div>
+
+            <!-- Expandable '+' Utility Accordions (All Text on Right) -->
+            <div class="zara-utility-links">
+              ${renderZaraUtilityAccordions(product, sold, specs)}
+            </div>
+          </div>
+        </div>
+
+        <!-- =================================================================== -->
+        <!-- B. MOBILE SINGLE-COLUMN ZARA PDP (EXACT VIDEO & SCREENSHOT FLOW)    -->
+        <!-- =================================================================== -->
+        <div class="zara-pdp-mobile-shell">
+          ${
+            !appBannerDismissed
+              ? `
+                <div class="zara-app-banner">
+                  <div style="display:flex; align-items:center; gap:12px;">
+                    <button type="button" class="dismiss-app-banner" aria-label="Close banner" style="background:transparent; border:0; padding:4px; cursor:pointer; color:var(--pdp-ink);">
+                      <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.1"><path d="M1 1L11 11M11 1L1 11"/></svg>
+                    </button>
+                    <div class="zara-app-logo-box">OOPS!<br>CLUB</div>
+                    <div style="font-size:10.5px; line-height:13.5px;">
+                      <div style="font-weight:500; color:var(--pdp-ink);">OOPS! CLUB™ ARCHIVE</div>
+                      <div style="color:var(--pdp-muted);">1-of-1 hoodies &amp; zippers.</div>
+                    </div>
+                  </div>
+                  <button type="button" class="zara-app-open-btn" data-instant-buy="${product.id}">
+                    ${sold ? "SOLD OUT" : "OPEN CLUB"}
+                  </button>
+                </div>
+              `
+              : ""
+          }
+
+          <!-- Mobile Sub-Header (=, Search, [ 0 ] Bag — No Wishlist Icon) -->
+          <div style="height:46px; padding:0 16px; display:flex; align-items:center; justify-content:space-between;">
+            <button type="button" class="sub-back-shop" aria-label="Back to shop" style="background:transparent; border:0; padding:6px 6px 6px 0; cursor:pointer; display:flex; flex-direction:column; gap:5px;">
+              <span style="display:block; width:16px; height:1px; background:var(--pdp-ink);"></span>
+              <span style="display:block; width:16px; height:1px; background:var(--pdp-ink);"></span>
+            </button>
+
+            <div style="display:flex; align-items:center; gap:20px;">
+              <button type="button" class="sub-focus-search" aria-label="Search pieces" style="background:transparent; border:0; padding:4px; cursor:pointer; color:var(--pdp-ink);">
+                <svg width="14" height="14" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.1">
+                  <circle cx="6.5" cy="6.5" r="5.2" />
+                  <line x1="10.5" y1="10.5" x2="14" y2="14" />
+                </svg>
+              </button>
+
+              <button type="button" class="sub-open-bag" aria-label="Open bag" style="background:transparent; border:0; padding:4px 0 4px 4px; cursor:pointer; color:var(--pdp-ink);">
+                <div class="zara-bag-bracket">
+                  <span>${bag.length}</span>
+                </div>
+              </button>
+            </div>
+          </div>
+
+          <!-- Mobile Shot 01 -->
+          <div style="padding: 0 16px;">
+            <div class="zara-desktop-shot">
+              <img src="${heroImage.url}" alt="${product.name}" style="${sold ? "filter:grayscale(1); opacity:0.55;" : ""}">
+              ${sold ? `<div class="sold-overlay-stamp"><span>OOPS, IT IS GONE. · NO RESTOCK</span></div>` : ""}
+            </div>
+          </div>
+
+          <!-- Mobile Above-the-Fold Summary Block -->
+          <div style="padding: 16px 16px 14px;">
+            <div class="zara-title-row">
+              <h2 class="zara-pdp-title" style="font-size:11.5px;">${product.name}</h2>
+              <button type="button" class="zara-swatch-trigger" data-switch-tab="colour">
+                <span>${product.colorCount || "1 OF 1"}</span>
+                <span class="zara-swatch-square" style="background:${product.swatchHex || "#000000"};"></span>
+              </button>
+            </div>
+
+            <div class="zara-pdp-price-row">
+              ${
+                product.originalPriceInr && !sold
+                  ? `
+                    <span style="text-decoration:line-through; color:var(--pdp-muted); font-size:10.5px;">${formatInr(product.originalPriceInr)}</span>
+                    <span style="padding:1px 5px; background:var(--pdp-ink); color:var(--pdp-bg); font-size:10.5px; font-weight:600;">
+                      ${product.discountLabel} ${formatInr(product.priceInr)}
+                    </span>
+                  `
+                  : `<span class="zara-pdp-price" style="font-size:11.5px; ${sold ? "text-decoration:line-through; opacity:0.6;" : ""}">${formatInr(product.priceInr)}</span>`
+              }
+            </div>
+            <div class="zara-pdp-tax">
+              ${sold ? "SOLD OUT — 1 OF 1 ARCHIVED" : "MRP INCL. OF ALL TAXES"}
+            </div>
+
+            <div id="inline-zara-add-anchor">
+              ${
+                sold
+                  ? `<button type="button" class="zara-rect-add-btn" disabled>OOPS, IT IS GONE.</button>`
+                  : `<button type="button" class="zara-rect-add-btn" data-add-bag="${product.id}">ADD</button>`
+              }
+            </div>
+          </div>
+
+          <!-- Mobile Interleaved Horizontal Tabs -->
+          <div style="padding: 4px 16px 22px;">
+            <div class="zara-tab-strip no-scrollbar" role="tablist">
+              <button type="button" class="zara-tab-btn ${activePdpTab === "description" ? "active" : ""}" data-switch-tab="description">DESCRIPTION</button>
+              <button type="button" class="zara-tab-btn ${activePdpTab === "colour" ? "active" : ""}" data-switch-tab="colour">COLOUR</button>
+              <button type="button" class="zara-tab-btn ${activePdpTab === "composition" ? "active" : ""}" data-switch-tab="composition">COMPOSITION</button>
+              <button type="button" class="zara-tab-btn ${activePdpTab === "measurements" ? "active" : ""}" data-switch-tab="measurements">MEASUREMENTS</button>
+              <button type="button" class="zara-tab-btn ${activePdpTab === "grade" ? "active" : ""}" data-switch-tab="grade">THRIFT GRADE</button>
+            </div>
+            <div class="zara-tab-panel">
+              ${renderZaraTabContent(product, specs)}
+            </div>
+          </div>
+
+          <!-- Mobile Remaining Stacked Lookbook Shots -->
+          <div style="padding: 0 16px; display:flex; flex-direction:column; gap:12px;">
+            ${remainingImages.map((img, i) => `
+              <div class="zara-desktop-shot ${i === 2 ? "landscape-detail" : ""}">
+                <img src="${img.url}" alt="${product.name} ${img.label}" style="${sold ? "filter:grayscale(1); opacity:0.55;" : ""}" loading="lazy">
+              </div>
+            `).join("")}
+          </div>
+
+          <!-- Mobile Utility Accordions -->
+          <div style="padding: 24px 16px 12px;">
+            <div class="zara-utility-links" style="border-top:0;">
+              ${renderZaraUtilityAccordions(product, sold, specs)}
+            </div>
+          </div>
+        </div>
+
+        <!-- =================================================================== -->
+        <!-- C. SHARED BOTTOM CROSS-SELL ("COMPLETE YOUR LOOK" & RECOMMENDATIONS) -->
+        <!-- =================================================================== -->
+        <div class="zara-pdp-recommendations-wrap">
+          <h2 class="zara-section-heading">COMPLETE YOUR LOOK</h2>
+          <div class="zara-rec-grid" style="margin-bottom: 42px;">
+            ${completeLookItems.map((item) => renderZaraMiniCard(item)).join("")}
+          </div>
+
+          <h2 class="zara-section-heading">YOU MAY ALSO LIKE</h2>
+          <div class="zara-rec-grid">
+            ${similarGridItems.map((item) => renderZaraMiniCard(item)).join("")}
+          </div>
+        </div>
+      `;
+
+      // Populate Exact Zara Mobile Sticky Bottom Bar (73% Bordered ADD Button + 27% Price)
+      mobileBuybarEl.innerHTML = `
+        ${
+          sold
+            ? `<button type="button" class="zara-sticky-add-btn" disabled style="opacity:0.45; cursor:not-allowed;">OOPS, IT IS GONE.</button>`
+            : `<button type="button" class="zara-sticky-add-btn" data-add-bag="${product.id}">ADD</button>`
+        }
+        <div class="zara-sticky-price" style="${sold ? "text-decoration:line-through; opacity:0.6;" : ""}">
+          ${formatInr(product.priceInr)}
+        </div>
+      `;
+
+      setupPdpInteractions();
+    }
+
+    function renderZaraMiniCard(item) {
+      const itemSold = isItemSold(item);
+      const swatchesHtml = (item.swatches || [item.swatchHex || "#000000"]).map(
+        (hex) => `<span class="zara-swatch-dot" style="background:${hex}; border-color:var(--pdp-line);"></span>`
+      ).join("");
+
+      return `
+        <div class="zara-mini-card" data-card-id="${item.id}">
+          <div class="zara-mini-media">
+            <img src="${item.images[0].url}" alt="${item.name}" style="${itemSold ? "filter:grayscale(1); opacity:0.5;" : ""}" loading="lazy">
+          </div>
+          <div class="zara-card-info">
+            <div class="zara-card-row-1">
+              <h3 class="zara-card-title" style="color:var(--pdp-ink); font-size:10px;">${item.name}</h3>
+              ${
+                itemSold
+                  ? `<span style="font-size:8.5px; color:var(--pdp-muted);">GONE</span>`
+                  : `<button type="button" class="zara-card-plus-btn" style="color:var(--pdp-ink);" data-add-bag="${item.id}" aria-label="Add ${item.name} to bag">+</button>`
+              }
+            </div>
+            <div class="zara-card-price-wrap">
+              ${
+                item.originalPriceInr && !itemSold
+                  ? `
+                    <span class="zara-price-old" style="color:var(--pdp-muted);">${formatInr(item.originalPriceInr)}</span>
+                    <div class="zara-price-discount-badge" style="background:var(--pdp-ink); color:var(--pdp-bg);">
+                      <span>${item.discountLabel}</span>
+                      <span>${formatInr(item.priceInr)}</span>
+                    </div>
+                  `
+                  : `<span style="font-size:10px; color:var(--pdp-ink);">${itemSold ? "SOLD" : formatInr(item.priceInr)}</span>`
+              }
+            </div>
+            <div class="zara-card-swatches">
+              ${swatchesHtml}
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderZaraUtilityAccordions(product, sold, specs) {
+      const mSpecs = specs || (measureUnit === "IN" ? product.measurementsIn : product.measurementsCm);
+      return `
+        <div class="zara-utility-item">
+          <button type="button" class="zara-utility-trigger">
+            <span>CHECK 1-OF-1 ARCHIVE AUTHENTICITY</span>
+            <span class="plus-icon">+</span>
+          </button>
+          <div class="zara-utility-body">
+            Strictly <strong>1-of-1 curated piece</strong> (${product.unisexSize} · Condition Grade <strong>${product.conditionScore}</strong>). Status: <strong>${sold ? "SOLD OUT (OOPS, IT IS GONE)" : "1 Piece Available at OOPS! CLUB™"}</strong>. Steam-sanitized, hand-inspected, and currently in ${product.liveBagCount} shopper bags.
+          </div>
+        </div>
+
+        <div class="zara-utility-item">
+          <button type="button" class="zara-utility-trigger">
+            <span>FLAT-LAY MEASUREMENTS &amp; FIT GUIDE</span>
+            <span class="plus-icon">+</span>
+          </button>
+          <div class="zara-utility-body">
+            Measured flat to the millimeter (${measureUnit}): <strong>Pit-to-Pit ${mSpecs.chest}</strong> · <strong>Length ${mSpecs.length}</strong> · <strong>Shoulder ${mSpecs.shoulder}</strong> · <strong>Sleeve ${mSpecs.sleeve}</strong>. Compare with your favorite hoodie or jacket at home for an exact fit.
+          </div>
+        </div>
+
+        <div class="zara-utility-item">
+          <button type="button" class="zara-utility-trigger">
+            <span>SHIPPING, EXCHANGES AND RETURNS</span>
+            <span class="plus-icon">+</span>
+          </button>
+          <div class="zara-utility-body">
+            Dispatched within 24 hours across India in custom OOPS! CLUB™ packaging. Because every hoodie &amp; zipper is a 1-of-1 piece with zero restocks, all archive drops are final sale. Need live video verification? DM <strong>@oopsclub_official</strong>.
+          </div>
+        </div>
+      `;
+    }
+
+    function renderZaraTabContent(product, specs) {
+      if (activePdpTab === "colour") {
+        return `
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <div style="display:flex; align-items:center; gap:8px;">
+              <span class="zara-swatch-square" style="width:14px; height:14px; background:${product.swatchHex || "#000"};"></span>
+              <span style="text-transform:uppercase; font-size:11px; letter-spacing:0.04em;">${product.sku || "ARCHIVE LOT"}</span>
+            </div>
+            <p style="margin:0; color:var(--pdp-muted);">${product.patinaSummary}</p>
+          </div>
+        `;
+      }
+      if (activePdpTab === "composition") {
+        return `
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <div style="text-transform:uppercase; font-size:10.5px; font-weight:700;">OUTER SHELL &amp; ARCHIVE SPEC</div>
+            <p style="margin:0;">${product.fabric}</p>
+            <p style="margin:0; font-size:10.5px; color:var(--pdp-muted);">
+              Steam-sanitized at OOPS! CLUB™ Studio. Cold gentle wash inside out. Do not tumble dry.
+            </p>
+          </div>
+        `;
+      }
+      if (activePdpTab === "measurements") {
+        return `
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <div style="display:flex; align-items:center; justify-content:space-between;">
+              <span style="font-size:10.5px; text-transform:uppercase; color:var(--pdp-muted);">TAGGED: ${product.unisexSize}</span>
+              <div class="unit-toggle" role="group" aria-label="Measurement unit">
+                <button type="button" class="unit-btn ${measureUnit === "IN" ? "active" : ""}" data-unit="IN">IN</button>
+                <button type="button" class="unit-btn ${measureUnit === "CM" ? "active" : ""}" data-unit="CM">CM</button>
+              </div>
+            </div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px 16px; padding:10px 0; border-top:1px solid var(--pdp-line); border-bottom:1px solid var(--pdp-line); font-size:11px;">
+              <span style="color:var(--pdp-muted);">PIT-TO-PIT (CHEST):</span>
+              <strong style="text-align:right;">${specs.chest}</strong>
+              <span style="color:var(--pdp-muted);">TOTAL LENGTH:</span>
+              <strong style="text-align:right;">${specs.length}</strong>
+              <span style="color:var(--pdp-muted);">SHOULDER:</span>
+              <strong style="text-align:right;">${specs.shoulder}</strong>
+              <span style="color:var(--pdp-muted);">SLEEVE:</span>
+              <strong style="text-align:right;">${specs.sleeve}</strong>
+            </div>
+          </div>
+        `;
+      }
+      if (activePdpTab === "grade") {
+        return `
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <div style="display:flex; align-items:center; justify-content:space-between;">
+              <span style="font-size:10.5px; text-transform:uppercase; font-weight:700;">CONDITION GRADE</span>
+              <span style="font-size:10.5px; padding:2px 8px; border:1px solid var(--pdp-border-strong); font-weight:700;">${product.conditionScore}</span>
+            </div>
+            <p style="margin:0;"><strong>Honest Flaw Report:</strong> ${product.flawReport}</p>
+          </div>
+        `;
+      }
+
+      return `
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <p style="margin:0;">${product.modelHeight || "Model height: 188 cm"} · ${product.unisexSize}</p>
+          <p style="margin:0;">${product.description} ${product.fitSummary}</p>
+          <p style="margin:0; text-transform:uppercase; letter-spacing:0.04em;">${product.sku || "BLACK | 4092/360/800"}</p>
+        </div>
+      `;
+    }
+
+    function setupPdpInteractions() {
+      const backBtn = document.querySelector("#pdp-back-btn");
+      if (backBtn) backBtn.addEventListener("click", () => { location.hash = "#plp"; });
+
+      document.querySelectorAll(".sub-back-shop").forEach((btn) => {
+        btn.addEventListener("click", () => { location.hash = "#plp"; });
+      });
+
+      document.querySelectorAll(".sub-open-bag").forEach((btn) => {
+        btn.addEventListener("click", () => setCartDrawer(true));
+      });
+
+      document.querySelectorAll(".sub-focus-search").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          plpSearchOpen = true;
+          location.hash = "#plp";
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+      });
+
+      document.querySelectorAll(".dismiss-app-banner").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          appBannerDismissed = true;
+          renderRoute();
+        });
+      });
+
+      const themeBtn = document.querySelector("#toggle-pdp-theme");
+      if (themeBtn) {
+        themeBtn.addEventListener("click", () => {
+          pdpTheme = pdpTheme === "light" ? "dark" : "light";
+          renderRoute();
+          showToast(pdpTheme === "light" ? "Zara Editorial Light Mode" : "OOPS! Dark Archive Mode");
+        });
+      }
+
+      const viewportBtn = document.querySelector("#toggle-pdp-viewport");
+      if (viewportBtn) {
+        viewportBtn.addEventListener("click", () => {
+          pdpForceMobile = !pdpForceMobile;
+          renderRoute();
+          showToast(pdpForceMobile ? "425px Mobile Frame Active" : "PC 2-Column Layout (Images Left / Text Right) Active");
+        });
+      }
+
+      document.querySelectorAll("[data-scroll-shot]").forEach((thumbBtn) => {
+        thumbBtn.addEventListener("click", () => {
+          const targetId = thumbBtn.dataset.scrollShot;
+          const targetEl = document.getElementById(targetId);
+          document.querySelectorAll("[data-scroll-shot]").forEach((b) => b.classList.toggle("active", b === thumbBtn));
+          if (targetEl) {
+            targetEl.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        });
+      });
+
+      document.querySelectorAll(".zara-utility-trigger").forEach((trigger) => {
+        trigger.addEventListener("click", () => {
+          trigger.parentElement.classList.toggle("open");
+        });
+      });
+
+      // Observe mobile inline ADD button so sticky bar appears when scrolling down
+      const inlineAnchor = document.querySelector("#inline-zara-add-anchor");
+      if (inlineAnchor && "IntersectionObserver" in window) {
+        inlineAddObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting && entry.boundingClientRect.top < 120) {
+              mobileBuybarEl.classList.add("is-visible");
+            } else {
+              mobileBuybarEl.classList.remove("is-visible");
+            }
+          });
+        }, { threshold: 0 });
+        inlineAddObserver.observe(inlineAnchor);
+      } else {
+        mobileBuybarEl.classList.add("is-visible");
+      }
+    }
+
+    /* ==========================================================================
+       05. BAG & CHECKOUT FLOW (STRICT ₹ INR)
+       ========================================================================== */
+    function renderBag() {
+      bagCountEl.textContent = bag.length;
+      document.querySelector(".drawer-count").textContent = `[ ${bag.length} ]`;
+
+      if (!bag.length) {
+        cartItemsEl.innerHTML = `
+          <div style="padding:36px 0; text-align:center; color:var(--muted);">
+            <p style="font-family:var(--display); font-size:13px; color:var(--ink); margin-bottom:6px;">YOUR BAG IS EMPTY.</p>
+            <p style="font-size:11.5px;">Remember: every hoodie &amp; zipper is 1-of-1 with zero restocks.</p>
+          </div>
+        `;
+        document.querySelector("#cart-subtotal").textContent = "₹ 0.00";
+        return;
+      }
+
+      cartItemsEl.innerHTML = bag.map((id, index) => {
+        const item = products[id];
+        return `
+          <div class="cart-item">
+            <img src="${item.images[0].url}" alt="${item.name}">
+            <div>
+              <h3>${item.name}</h3>
+              <div class="cart-meta">${item.unisexSize} · ${item.measurementsIn.chest} Chest</div>
+              <div class="cart-price">${formatInr(item.priceInr)}</div>
+            </div>
+            <button class="remove-item" type="button" data-remove-index="${index}">Remove</button>
+          </div>
+        `;
+      }).join("");
+
+      document.querySelector("#cart-subtotal").textContent = formatTotalInr(bag);
+    }
+
+    function setCartDrawer(open) {
+      if (open) setProfileDrawer(false);
+      cartDrawerEl.classList.toggle("open", open);
+      cartDrawerEl.setAttribute("aria-hidden", String(!open));
+      syncBackdrop();
+    }
+
+    function setProfileDrawer(open) {
+      if (open) setCartDrawer(false);
+      profileDrawerEl.classList.toggle("open", open);
+      profileDrawerEl.setAttribute("aria-hidden", String(!open));
+      syncBackdrop();
+    }
+
+    function syncBackdrop() {
+      const anyOpen = cartDrawerEl.classList.contains("open") || profileDrawerEl.classList.contains("open");
+      backdropEl.classList.toggle("open", anyOpen);
+      document.body.style.overflow = anyOpen ? "hidden" : "";
+    }
+
+    function openCheckoutModal(itemIdsToBuy) {
+      if (!itemIdsToBuy.length) {
+        showToast("Add a 1-of-1 hoodie or zipper to your bag first!");
+        return;
+      }
+      setCartDrawer(false);
+
+      let savedProfile = { name: "", email: "", phone: "" };
+      try {
+        const p = JSON.parse(localStorage.getItem("oops-club-profile") || "null");
+        if (p) savedProfile = p;
+      } catch (e) {}
+
+      const formattedTotal = formatTotalInr(itemIdsToBuy);
+
+      checkoutModalContentEl.innerHTML = `
+        <div class="drawer-head">
+          <h2>CLAIM YOUR 1-OF-1 ORDER</h2>
+          <button type="button" class="close-button" id="close-checkout-modal">×</button>
+        </div>
+        <p style="font-size:11.5px; color:var(--muted); margin:12px 0;">
+          Completing this order immediately marks this piece as <strong style="color:var(--orange);">"OOPS, IT IS GONE."</strong> across the store.
+        </p>
+        <div style="background:#0a0a0a; border:1px solid var(--line); padding:12px; margin-bottom:14px;">
+          ${itemIdsToBuy.map((id) => `
+            <div style="display:flex; justify-content:space-between; font-size:11.5px; padding:4px 0;">
+              <span><strong>${products[id].name}</strong> (${products[id].unisexSize})</span>
+              <span style="color:var(--ink); font-weight:700;">${formatInr(products[id].priceInr)}</span>
+            </div>
+          `).join("")}
+          <div style="display:flex; justify-content:space-between; font-size:12.5px; font-weight:800; padding-top:8px; margin-top:8px; border-top:1px solid var(--line);">
+            <span>TOTAL TO PAY (INCL. TAXES)</span>
+            <span style="color:var(--orange);">${formattedTotal}</span>
+          </div>
+        </div>
+        <form class="form-grid" id="order-submit-form">
+          <label class="form-label">Full Name
+            <input class="form-input" name="name" type="text" value="${savedProfile.name || ""}" placeholder="Your full name" required>
+          </label>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+            <label class="form-label">Email (For Receipt)
+              <input class="form-input" name="email" type="email" value="${savedProfile.email || ""}" placeholder="you@email.com" required>
+            </label>
+            <label class="form-label">WhatsApp / Phone
+              <input class="form-input" name="phone" type="tel" value="${savedProfile.phone || ""}" placeholder="+91 98765 43210" required>
+            </label>
+          </div>
+          <label class="form-label">Shipping Address &amp; Pincode
+            <input class="form-input" name="address" type="text" placeholder="House/Flat No, Street, City, Pincode" required>
+          </label>
+          <button type="submit" class="button" style="width:100%; min-height:48px; margin-top:6px;">
+            Confirm Order (${formattedTotal}) — Lock 1-of-1 Piece →
+          </button>
+        </form>
+      `;
+
+      checkoutModalEl.classList.add("open");
+      checkoutModalEl.setAttribute("aria-hidden", "false");
+
+      document.querySelector("#close-checkout-modal").addEventListener("click", closeCheckoutModal);
+
+      document.querySelector("#order-submit-form").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.currentTarget);
+        const customerName = formData.get("name");
+        const orderCode = "OOPS-" + Math.floor(100000 + Math.random() * 900000);
+
+        itemIdsToBuy.forEach((id) => { if (products[id]) products[id].isSold = true; });
+        bag = bag.filter((id) => !itemIdsToBuy.includes(id));
+        renderBag();
+
+        try {
+          const allSold = Object.values(products).filter((p) => p.isSold).map((p) => p.id);
+          localStorage.setItem("oops-club-sold-ids", JSON.stringify(allSold));
+        } catch (err) {}
+
+        checkoutModalContentEl.innerHTML = `
+          <div style="text-align:center; padding:12px 0;">
+            <span class="eyebrow" style="justify-content:center; margin-bottom:10px;">✳ ORDER CONFIRMED · ${orderCode}</span>
+            <h2 style="font-family:var(--display); font-size:26px; font-weight:900; color:var(--orange); margin:6px 0;">
+              IT'S YOURS, ${customerName.toUpperCase()}!
+            </h2>
+            <p style="font-size:12.5px; color:#d4d4d4; line-height:1.6; margin:10px 0 18px;">
+              Your 1-of-1 piece has officially flipped to <strong style="color:var(--orange);">"OOPS, IT IS GONE."</strong> across the store.
+            </p>
+            <button type="button" class="button" id="finish-order-btn" style="width:100%;">
+              Back to Rotation →
+            </button>
+          </div>
+        `;
+
+        renderProductGrid();
+        renderRoute();
+        document.querySelector("#finish-order-btn").addEventListener("click", closeCheckoutModal);
+      });
+    }
+
+    function closeCheckoutModal() {
+      checkoutModalEl.classList.remove("open");
+      checkoutModalEl.setAttribute("aria-hidden", "true");
+    }
+
+    /* ==========================================================================
+       06. GLOBAL EVENT DELEGATION & SEARCH -> PLP ROUTING
+       ========================================================================== */
+    function syncHomeFilterButtons() {
+      document.querySelectorAll("[data-home-filter]").forEach((b) => {
+        const active = b.dataset.homeFilter === activeFilter;
+        b.classList.toggle("active", active);
+        b.setAttribute("aria-pressed", String(active));
+      });
+    }
+
+    function openPlpWithCategory(filterKey) {
+      activeFilter = filterKey;
+      syncHomeFilterButtons();
+      renderProductGrid();
+      location.hash = "#plp";
+      renderRoute();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    document.addEventListener("click", (event) => {
+      const filterJump = event.target.closest("[data-filter-jump]");
+      if (filterJump) {
+        event.preventDefault();
+        openPlpWithCategory(filterJump.dataset.filterJump);
+        return;
+      }
+
+      const tabSwitchBtn = event.target.closest("[data-switch-tab]");
+      if (tabSwitchBtn) {
+        activePdpTab = tabSwitchBtn.dataset.switchTab;
+        renderRoute();
+        return;
+      }
+
+      const addBagBtn = event.target.closest("[data-add-bag]");
+      if (addBagBtn) {
+        event.preventDefault();
+        event.stopPropagation();
+        const id = addBagBtn.dataset.addBag;
+        const item = products[id];
+        if (isItemSold(item)) {
+          showToast("Oops, it is gone! This 1-of-1 piece is sold.");
+          return;
+        }
+        if (bag.includes(id)) {
+          showToast("This 1-of-1 piece is already in your bag!");
+          setCartDrawer(true);
+          return;
+        }
+        bag.push(id);
+        renderBag();
+        renderRoute();
+        showToast(`Added: ${item.name} (${formatInr(item.priceInr)})`);
+        return;
+      }
+
+      const instantBuyBtn = event.target.closest("[data-instant-buy]");
+      if (instantBuyBtn) {
+        event.preventDefault();
+        event.stopPropagation();
+        const id = instantBuyBtn.dataset.instantBuy;
+        if (isItemSold(products[id])) {
+          showToast("Oops, it is gone!");
+          return;
+        }
+        openCheckoutModal([id]);
+        return;
+      }
+
+      const unitBtn = event.target.closest("[data-unit]");
+      if (unitBtn) {
+        measureUnit = unitBtn.dataset.unit;
+        renderRoute();
+        showToast(`Measurements switched to ${measureUnit === "IN" ? "Inches (IN)" : "Centimeters (CM)"}`);
+        return;
+      }
+
+      const singleSoldBtn = event.target.closest("[data-toggle-single-sold]");
+      if (singleSoldBtn) {
+        const id = singleSoldBtn.dataset.toggleSingleSold;
+        products[id].isSold = !products[id].isSold;
+        renderProductGrid();
+        renderRoute();
+        showToast(products[id].isSold ? `Simulated: "OOPS, IT IS GONE." active` : `Restored to available`);
+        return;
+      }
+
+      const randomPdpBtn = event.target.closest("[data-open-random-pdp]");
+      if (randomPdpBtn) {
+        location.hash = "#product/zara-quarter-zip-sweatshirt";
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        return;
+      }
+
+      const card = event.target.closest("[data-card-id]");
+      if (card) {
+        activePdpTab = "description";
+        location.hash = `#product/${card.dataset.cardId}`;
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        return;
+      }
+    });
+
+    // Homepage Category Filter Tabs (VIEW ALL | HOODIES | ZIPPERS)
+    document.querySelectorAll("[data-home-filter]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        activeFilter = btn.dataset.homeFilter;
+        syncHomeFilterButtons();
+        renderProductGrid();
+      });
+    });
+
+    // Zara [▯▯] Grid Density Switcher on Homepage
+    document.querySelector("#grid-density-toggle").addEventListener("click", () => {
+      gridDensity = gridDensity === 4 ? 2 : 4;
+      renderProductGrid();
+      showToast(`View switched to ${gridDensity}-column editorial grid`);
+    });
+
+    // Header Hamburger Button opens the Zara PLP View
+    document.querySelector("#header-menu-btn").addEventListener("click", () => {
+      openPlpWithCategory("all");
+    });
+
+    // Brand Logo returns to Home
+    document.querySelector("#brand-home-link").addEventListener("click", (e) => {
+      e.preventDefault();
+      location.hash = "#top";
+      renderRoute();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    // Searching in Header immediately opens the Zara PLP Page (#plp) and filters live
+    document.querySelector("#search-form").addEventListener("submit", (e) => {
+      e.preventDefault();
+      plpSearchOpen = true;
+      location.hash = "#plp";
+      renderRoute();
+    });
+
+    productSearchEl.addEventListener("input", () => {
+      plpSearchOpen = true;
+      if (location.hash !== "#plp") {
+        location.hash = "#plp";
+      }
+      renderProductGrid();
+      renderRoute();
+    });
+
+    document.querySelector(".bag-button").addEventListener("click", () => setCartDrawer(true));
+    document.querySelector("#close-cart-btn").addEventListener("click", () => setCartDrawer(false));
+    document.querySelector(".profile-button").addEventListener("click", () => setProfileDrawer(true));
+    document.querySelector("#close-profile-btn").addEventListener("click", () => setProfileDrawer(false));
+    backdropEl.addEventListener("click", () => { setCartDrawer(false); setProfileDrawer(false); });
+
+    cartItemsEl.addEventListener("click", (e) => {
+      const remBtn = e.target.closest("[data-remove-index]");
+      if (!remBtn) return;
+      bag.splice(Number(remBtn.dataset.removeIndex), 1);
+      renderBag();
+      renderRoute();
+    });
+
+    document.querySelector("#open-checkout-btn").addEventListener("click", () => openCheckoutModal([...bag]));
+
+    document.querySelector("#profile-form").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const profile = {
+        name: document.querySelector("#profile-name").value.trim(),
+        email: document.querySelector("#profile-email").value.trim(),
+        phone: document.querySelector("#profile-phone").value.trim()
+      };
+      try { localStorage.setItem("oops-club-profile", JSON.stringify(profile)); } catch (err) {}
+      showToast(`Profile saved for ${profile.name}!`);
+      setProfileDrawer(false);
+    });
+
+    document.querySelector("#newsletter-form").addEventListener("submit", (e) => {
+      e.preventDefault();
+      showToast("You're on the OOPS! CLUB™ early drop list.");
+      e.currentTarget.reset();
+    });
+
+    /* ==========================================================================
+       07. HERO CAROUSEL (2 SLIDES ONLY: HOODIES & ZIPPERS — NO ARROW BUTTONS)
+       ========================================================================== */
+    const heroEl = document.querySelector("#hero-section");
+    const heroSlides = [...document.querySelectorAll(".hero-slide")];
+    const heroDots = [...document.querySelectorAll(".hero-dot")];
+    let activeHeroSlide = 0;
+    let heroPaused = false;
+
+    function showHeroSlide(index) {
+      activeHeroSlide = (index + heroSlides.length) % heroSlides.length;
+      heroSlides.forEach((slide, idx) => {
+        const active = idx === activeHeroSlide;
+        slide.classList.toggle("is-active", active);
+        slide.setAttribute("aria-hidden", String(!active));
+        slide.inert = !active;
+        heroDots[idx].setAttribute("aria-current", String(active));
+      });
+    }
+
+    heroEl.addEventListener("click", (e) => {
+      const dotIdx = heroDots.indexOf(e.target.closest(".hero-dot"));
+      if (dotIdx !== -1) showHeroSlide(dotIdx);
+    });
+    heroEl.addEventListener("mouseenter", () => { heroPaused = true; });
+    heroEl.addEventListener("mouseleave", () => { heroPaused = false; });
+
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setInterval(() => {
+        if (!heroPaused && document.visibilityState === "visible" && !heroEl.hidden) {
+          showHeroSlide(activeHeroSlide + 1);
+        }
+      }, 5200);
+    }
+
+    window.addEventListener("hashchange", renderRoute);
+    renderProductGrid();
+    renderBag();
+    renderRoute();
+  </script>
+</body>
+</html>
